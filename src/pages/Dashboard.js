@@ -76,6 +76,7 @@ function Dashboard() {
   const sortedHouses = houses.slice().sort((a, b) => b.score - a.score);
 
   return (
+    
     <div className="container">
       <h2>Check who's winning!</h2>
       <div className="score-boxes">
@@ -89,7 +90,7 @@ function Dashboard() {
         </div>
       </div>
       <div className="updated-date">
-        Updated: {scoreData.updatedDate || "No date available"}
+        Updated: {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : "No date available"}
       </div>
       <h3>Current Winning House</h3>
       <div className="houses-container">

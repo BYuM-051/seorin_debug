@@ -33,7 +33,8 @@ header h1 {
   display:flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
 }
 
 .navigationBar a{
@@ -51,14 +52,18 @@ header h1 {
    3. CONTAINER
 ================================= */
 .container {
-  max-width: 1200px;
+  max-width: 20000px;
   margin: 0;
   background: #fff;
   padding: 1rem;
   border-radius: 4px;
   overflow-x: hidden;
 }
-
+.midtitleDIV
+{
+  display: flex;
+  justify-content: space-between;
+}
 /* ===============================
    4. SCORE BOXES (RED/WHITE)
 ================================= */
@@ -69,12 +74,14 @@ header h1 {
   margin-bottom: 1rem;
   
 }
+
 .score-box {
   flex: 1;
   min-width: 200px;
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
+  font-weight: bold;
   border: 1px solid #ddd;
   box-shadow: 0px 3px 3px 1px grey;
 }
@@ -106,7 +113,18 @@ header h1 {
   gap: 1rem;
   overflow-x: auto;
   padding: 10px 10px 10px 10px;
-  
+}
+.houses-columns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.house-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .house-item {
   display: flex;
@@ -121,13 +139,27 @@ header h1 {
 .house-rank {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  background: #60c337;
-  color: #fff;
+  border-radius: 10%;
+  background: #DDD;
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  
   font-size: 0.8rem;
+}
+.rank-1 {
+  background-color: olive;
+  color : white;
+}
+.rank-2 {
+  background-color: blue;
+  color : white;
+}
+.rank-3 {
+  background-color: gold;
+  color : white;
 }
 .house-name {
   flex: 1;
@@ -139,6 +171,8 @@ header h1 {
 /* ===============================
    7. BUTTONS
 ================================= */
+/*0415 deprecated*/
+/*
 button {
   padding: 0.5rem 1rem;
   margin-top: 1rem;
@@ -149,6 +183,7 @@ button {
   cursor: pointer;
   transition: background 0.2s ease;
 }
+  
 button:hover {
   background: #005bb5;
 }
@@ -172,7 +207,20 @@ button:hover {
 .edit-button:hover {
   background: #005bb5;
 }
+*/
 
+.edit-button {
+  margin-top: 1rem;
+  border: none;
+  height: 1.5rem;
+  width: 3rem;
+  border-radius: 10%;
+  box-shadow: 0px 3px 3px 1px grey;
+}
+
+.edit-button:hover {
+  background: #bbb;
+}
 /* ===============================
    8. LOGIN & SIGNUP PAGES
 ================================= */
@@ -250,7 +298,7 @@ button:hover {
   padding: 1rem;
 }
 .popup-content {
-  background: #494444;
+  background: #fff;
   padding: 1rem;
   border-radius: 8px;
   width: 90%;

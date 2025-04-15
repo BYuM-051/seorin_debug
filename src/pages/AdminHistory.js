@@ -33,8 +33,8 @@ function AdminHistory() {
       console.error("Error updating record:", error);
     }
   };
-
   return (
+    
     <div className="container">
       <h2>History of Winners!</h2>
       <div className="history-stats">

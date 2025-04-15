@@ -44,8 +44,7 @@ function App() {
               )}
             </nav>
             <div className="navRight">
-              {(currentUser && (<a onClick={handleLogout}>logout</a>))}
-              {(!currentUser && (<Link to ="/login">login</Link>/<Link to = "/signup">signup</Link>))}
+              {(role==="admin" && (<a onClick={handleLogout}>logout</a>))}
             </div>
           </div>
         </header>
