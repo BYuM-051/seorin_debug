@@ -24,22 +24,6 @@ function History() {
     });
   }, []);
 
-  const handleAddSampleHistory = async () => {
-    const sampleRecord = {
-      year: new Date().getFullYear(),
-      team: Math.random() > 0.5 ? "RED" : "WHITE",
-      house: ["West House", "Village Girls", "Village Boys", "Dinning"]
-      [Math.floor(Math.random() * 4)]
-    };
-
-    try {
-      await push(ref(db, "history"), sampleRecord);
-      alert("Sample history record added!");
-    } catch (error) {
-      console.error("Error adding sample history record:", error);
-    }
-  };
-
   return (
     <div className="container">
       <h2>History of Winners!</h2>
@@ -48,10 +32,6 @@ function History() {
         <div className="history-stat-box whiteish">{whiteWins} times</div>
       </div>
       <div style={{ textAlign: "left", marginBottom: "1rem" }}>
-        <button onClick={handleAddSampleHistory}
-         style={{ backgroundColor: "orange" }}>
-          Add Sample History
-        </button>
       </div>
       <table className="history-list">
         <thead>

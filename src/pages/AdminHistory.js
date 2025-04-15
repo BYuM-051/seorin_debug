@@ -1,7 +1,7 @@
 // src/pages/AdminHistory.js
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
-import { ref, onValue, set } from "firebase/database";
+import { ref, onValue, set, push } from "firebase/database";
 import "../index.css";
 
 function AdminHistory() {
@@ -10,6 +10,9 @@ function AdminHistory() {
   const [whiteWins, setWhiteWins] = useState(0);
   const [editingId, setEditingId] = useState(null);
   const [editRecord, setEditRecord] = useState({ year: "", team: "", house: "" });
+
+  const redDorms = ["West House", "Village Girls", "Village Boys", "Dinning"];
+  const whiteDorms = ["East House", "Steward Top", "Steward Middle"]
 
   useEffect(() => {
     const historyRef = ref(db, "history");
@@ -33,10 +36,32 @@ function AdminHistory() {
       console.error("Error updating record:", error);
     }
   };
+
+  const handleAddSampleHistory = async () => {
+    const sampleRecord = {
+      year: new Date().getFullYear(),
+      team: Math.random() > 0.5 ? "RED" : "WHITE",
+      house: ["West House", "Village Girls", "Village Boys", "Dinning"]
+      [Math.floor(Math.random() * 4)]
+    };
+
+    try {
+      await push(ref(db, "history"), sampleRecord);
+      alert("Sample history record added!");
+    } catch (error) {
+      console.error("Error adding sample history record:", error);
+    }
+  };
+
   return (
     
     <div className="container">
-      <h2>History of Winners!</h2>
+      <div className="midtitleDIV">
+        <h2>History of Winners!</h2>
+        <button className="edit-button" onClick={handleAddSampleHistory}>
+          Edit
+        </button>
+      </div>
       <div className="history-stats">
         <div className="history-stat-box redish">{redWins} times</div>
         <div className="history-stat-box whiteish">{whiteWins} times</div>
@@ -117,6 +142,9 @@ function AdminHistory() {
                       <option value="Village Girls">Village Girls</option>
                       <option value="Village Boys">Village Boys</option>
                       <option value="Dinning">Dinning</option>
+                      <option value="East House">East House</option>
+                      <option value="Steward Top">Steward Top</option>
+                      <option value="Steward Middle">Steward Middle</option>
                     </select>
                   ) : (
                     record.house
