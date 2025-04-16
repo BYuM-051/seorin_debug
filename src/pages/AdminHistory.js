@@ -11,9 +11,6 @@ function AdminHistory() {
   const [editingId, setEditingId] = useState(null);
   const [editRecord, setEditRecord] = useState({ year: "", team: "", house: "" });
 
-  const redDorms = ["West House", "Village Girls", "Village Boys", "Dinning"];
-  const whiteDorms = ["East House", "Steward Top", "Steward Middle"]
-
   useEffect(() => {
     const historyRef = ref(db, "history");
     onValue(historyRef, (snapshot) => {

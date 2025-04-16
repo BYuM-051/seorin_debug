@@ -4,9 +4,6 @@ import { db } from "../firebase/firebase";
 import { ref, onValue, set } from "firebase/database";
 import "../index.css";
 
-const redDorms = ["West House", "Village Girls", "Village Boys", "Dinning"];
-const whiteDorms = ["East House", "Steward Top", "Steward Middle"]
-
 function AdminDashboard() {
   const [data, setData] = useState(null);
   const [showModal, setShowModal] = useState(false);

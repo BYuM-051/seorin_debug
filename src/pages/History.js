@@ -1,7 +1,7 @@
 // src/pages/History.js
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
-import { ref, onValue, push } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import "../index.css";
 
 function History() {

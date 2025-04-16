@@ -74,19 +74,20 @@ function Dashboard() {
     
     <div className="container">
       <h2 className = "subHeading">Color Competition</h2>
-      <div className="score-boxes">
-        <div className="score-box red">
-          <h2>RED</h2>
-          <div className="score">{redScore}</div>
-        </div>
-        <div className="score-box white">
-          <h2>WHITE</h2>
-          <div className="score">{whiteScore}</div>
-        </div>
-      </div>
       <div className="updated-date">
         Updated: {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : "No date available"}
       </div>
+      <div className="score-boxes">
+        <div className="score-box red">
+          <div className="scoreTitle">RED</div>
+          <div className="score">{redScore}</div>
+        </div>
+        <div className="score-box white">
+          <div className="scoreTitle">WHITE</div>
+          <div className="score">{whiteScore}</div>
+        </div>
+      </div>
+      
       <h2 className = "subHeading">Morty Cup</h2>
       <div className="houses-container">
       <div className="houses-columns">
