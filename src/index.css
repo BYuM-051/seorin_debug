@@ -16,22 +16,28 @@ body {
    2. HEADER (if used)
 ================================= */
 .titleDIV {
+  position: relative;
   background: #892233;
   padding: 1rem 2rem;
+  height: 4rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  color:#fff;
-}
-.titleDIV h1 {
-  margin: 0;
-  width: 100%;
-  text-align: center;
 }
 
-.logoIMG {
-  height : 3rem;
+.titleDIV .logoIMG {
+  height: 3rem;
+  z-index: 2;
+}
+
+.titleDIV h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: white;
+  font-size: 2rem;
+  z-index: 1;
+  white-space: nowrap;
 }
 
 .navigationBar
@@ -92,7 +98,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 2rem;
+
   
 }
 

@@ -73,10 +73,10 @@ function Dashboard() {
   return (
     
     <div className="container">
-      <h2 className = "subHeading">Color Competition</h2>
       <div className="updated-date">
         Updated: {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : "No date available"}
       </div>
+      <h2 className = "subHeading">Color Competition</h2>
       <div className="score-boxes">
         <div className="score-box red">
           <div className="scoreTitle">RED</div>
