@@ -27,32 +27,28 @@ function History() {
   return (
     <div className="container">
       <h2>History of Winners!</h2>
-      <div className="history-stats">
-        <div className="history-stat-box redish">{redWins} times</div>
-        <div className="history-stat-box whiteish">{whiteWins} times</div>
+      <div className="score-boxes">
+        <div className="score-box red">
+          <span>{redWins}</span> 
+          <div>times</div>
+        </div>
+        <div className="score-box white">
+          <span>{whiteWins}</span> 
+          <div>times</div>
+        </div>
       </div>
-      <div style={{ textAlign: "left", marginBottom: "1rem" }}>
+
+      <div className="history-lists">
+        {records.map((record, idx) => (
+          <div className="history-list" key={idx}>
+            <div className="history-cell year">{record.year}</div>
+            <div>|</div>
+            <div className="history-cell team">{record.team}</div>
+            <div>|</div>
+            <div className="history-cell house">{record.house}</div>
+          </div>
+        ))}
       </div>
-      <table className="history-list">
-        <thead>
-          <tr>
-            <th style={{ width: "40px" }}></th>
-            <th>Year</th>
-            <th>Team</th>
-            <th>Dormitory</th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.map((record, idx) => (
-            <tr key={idx}>
-              <td></td>
-              <td>{record.year}</td>
-              <td>{record.team}</td>
-              <td>{record.house}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }

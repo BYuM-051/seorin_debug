@@ -58,94 +58,102 @@ function AdminHistory() {
       <div className="midtitleDIV">
         <h2>History of Winners!</h2>
         <button className="edit-button" onClick={handleAddSampleHistory}>
-          Edit
+          Add
         </button>
       </div>
-      <div className="history-stats">
-        <div className="history-stat-box redish">{redWins} times</div>
-        <div className="history-stat-box whiteish">{whiteWins} times</div>
+      <div className="score-boxes">
+        <div className="score-box red">
+          <span>{redWins}</span> 
+          <div>times</div>
+        </div>
+        <div className="score-box white">
+          <span>{whiteWins}</span> 
+          <div>times</div>
+        </div>
       </div>
-      <table className="history-list">
-        <tbody>
-          {records.map((record) => {
-            const isEditing = editingId === record.id;
-            return (
-              <tr key={record.id}>
-                <td>
-                  {isEditing ? (
-                    <>
-                      <button onClick={() => handleEditSave(record.id)}>Save</button>
-                      <button onClick={() => setEditingId(null)} style={{ marginLeft: "4px" }}>
-                        X
-                      </button>
-                    </>
-                  ) : (
-                    <button
-                      className="edit-button"
-                      onClick={() => {
-                        setEditingId(record.id);
-                        setEditRecord({
-                          year: record.year,
-                          team: record.team,
-                          house: record.house,
-                        });
-                      }}
-                      title="Edit record"
-                    >
-                      ✏️
+      
+      <div className = "history-lists">
+        {records.map((record) => {
+          const isEditing = editingId === record.id;
+          return (
+            <div className="history-list-admin" key={record.id}>
+              <div className="history-cell edit">
+                {isEditing ? (
+                  <>
+                    <button onClick={() => handleEditSave(record.id)}>Save</button>
+                    <button onClick={() => setEditingId(null)} style={{ marginLeft: "4px" }}>
+                      X
                     </button>
-                  )}
-                </td>
-                <td>
-                  {isEditing ? (
-                    <input
-                      type="number"
-                      value={editRecord.year}
-                      onChange={(e) => setEditRecord({ ...editRecord, year: e.target.value })}
-                      style={{ width: "80px" }}
-                    />
-                  ) : (
-                    record.year
-                  )}
-                </td>
-                <td>
-                  {isEditing ? (
-                    <select
-                      value={editRecord.team}
-                      onChange={(e) => setEditRecord({ ...editRecord, team: e.target.value })}
-                    >
-                      <option value="">Select Team</option>
-                      <option value="RED">RED</option>
-                      <option value="WHITE">WHITE</option>
-                    </select>
-                  ) : (
-                    record.team
-                  )}
-                </td>
-                <td>
-                  {isEditing ? (
-                    <select
-                      value={editRecord.house}
-                      onChange={(e) => setEditRecord({ ...editRecord, house: e.target.value })}
-                    >
-                      <option value="">Select Dormitory</option>
-                      <option value="West House">West House</option>
-                      <option value="Village Girls">Village Girls</option>
-                      <option value="Village Boys">Village Boys</option>
-                      <option value="Dinning">Dinning</option>
-                      <option value="East House">East House</option>
-                      <option value="Steward Top">Steward Top</option>
-                      <option value="Steward Middle">Steward Middle</option>
-                    </select>
-                  ) : (
-                    record.house
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  </>
+                ) : (
+                  <button
+                    className="edit-button"
+                    onClick={() => {
+                      setEditingId(record.id);
+                      setEditRecord({
+                        year: record.year,
+                        team: record.team,
+                        house: record.house,
+                      });
+                    }}
+                    title="Edit record"
+                  >
+                    ✏️
+                  </button>
+                )}
+              </div>
+              <div>|</div>
+              <div className="history-cell year">
+                {isEditing ? (
+                  <input
+                    type="number"
+                    value={editRecord.year}
+                    onChange={(e) => setEditRecord({ ...editRecord, year: e.target.value })}
+                    style={{ width: "80px" }}
+                  />
+                ) : (
+                  record.year
+                )}
+              </div>
+              <div>|</div>
+              <div className = "history-cell team">
+                {isEditing ? (
+                  <select
+                    value={editRecord.team}
+                    onChange={(e) => setEditRecord({ ...editRecord, team: e.target.value })}
+                  >
+                    <option value="">Select Team</option>
+                    <option value="RED">RED</option>
+                    <option value="WHITE">WHITE</option>
+                  </select>
+                ) : (
+                  record.team
+                )}
+              </div>
+              <div>|</div>
+              <div className="history-cell house">
+                {isEditing ? (
+                  <select
+                    value={editRecord.house}
+                    onChange={(e) => setEditRecord({ ...editRecord, house: e.target.value })}
+                  >
+                    <option value="">Select Dormitory</option>
+                    <option value="West House">West House</option>
+                    <option value="Village Girls">Village Girls</option>
+                    <option value="Village Boys">Village Boys</option>
+                    <option value="Dinning">Dinning</option>
+                    <option value="East House">East House</option>
+                    <option value="Steward Top">Steward Top</option>
+                    <option value="Steward Middle">Steward Middle</option>
+                  </select>
+                ) : (
+                  record.house
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

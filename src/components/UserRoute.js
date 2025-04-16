@@ -7,7 +7,7 @@ export default function UserRoute({ children }) {
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
-  if (role !== "user") {
+  if (role === "admin") {
     // If admin tries to access user routes, redirect to admin dashboard
     return <Navigate to="/admin/dashboard" />;
   }

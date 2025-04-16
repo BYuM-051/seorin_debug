@@ -145,7 +145,9 @@ function AdminDashboard() {
           <span className="score">{whiteScore}</span>
         </div>
       </div>
-      <h2 className="subHeading">Current Winning House</h2>
+      <div className="midtitleDIV">
+        <h2 className="subHeading">Current Winning House</h2>
+      </div>
       <div className="houses-container">
       <div className="houses-columns">
         <div className="house-col">

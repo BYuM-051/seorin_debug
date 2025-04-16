@@ -56,6 +56,11 @@ body {
   cursor: pointer;
 }
 
+.active-link{
+  font-weight: bold;
+  pointer-events: none;
+}
+
 /* ===============================
    3. CONTAINER
 ================================= */
@@ -72,6 +77,8 @@ body {
 {
   display: flex;
   justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .subHeading
@@ -195,51 +202,16 @@ body {
 /* ===============================
    7. BUTTONS
 ================================= */
-/*0415 deprecated*/
-/*
-button {
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 4px;
-  background: #0070f3;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-  
-button:hover {
-  background: #005bb5;
-}
-.edit-button {
-  background: #0070f3;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.edit-button:hover {
-  background: #005bb5;
-}
-*/
 
 .edit-button {
   margin-top: 1rem;
   border: none;
-  height: 1.5rem;
+  font-size: 1rem;
   width: 3rem;
+  height: 1.8rem;
   border-radius: 10%;
   box-shadow: 0px 3px 3px 1px grey;
+  cursor: pointer;
 }
 
 .edit-button:hover {
@@ -437,19 +409,37 @@ button:hover {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
 }
-.history-list {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-  overflow-x: auto;
-}
-.history-list th,
-.history-list td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
+.history-lists {
+  display: flex;
+  flex-direction: column;
+  gap : 0.8rem;
+  margin-top: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
   text-align: center;
-  white-space: nowrap;
+  vertical-align: middle;
 }
-.history-list th {
-  background: #f0f0f0;
+.history-list {
+  display: grid;
+  grid-template-columns: 30rem 2rem 30rem 2rem 1fr;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 3px 3px 1px grey;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0.8rem;
+  height: 5rem;
+}
+.history-list-admin {
+  display: grid;
+  grid-template-columns: 10rem 2rem 17rem 2rem 30rem 2rem 1fr;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 3px 3px 1px grey;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0.8rem;
+  height: 5rem;
 }

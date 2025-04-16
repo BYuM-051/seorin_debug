@@ -14,11 +14,10 @@ import "./index.css";
 
 function App() {
   const location = useLocation();
-  const { role, currentUser } = useAuth();
+  const { role, currentUser, logout } = useAuth();
   // Hide header on login and signup pages
   const showHeader = location.pathname !== "/login" && location.pathname !== "/signup";
   const showNav = role === "admin";
-  const { logout } = useAuth();
   const handleLogout = ()=>{
     logout();
   };
@@ -27,15 +26,15 @@ function App() {
       {showHeader && (
         <header>
           <div className="titleDIV">
-            <img className="logoIMG" src="/logoHeader.png"/>
+            <img className="logoIMG" src="/logoHeader.png" alt="Logo"/>
             <h1>SCOREBOARD</h1>
           </div>
           {showNav && (<div className="navigationBar">
             <nav className="navLeft">
               {role === "admin" && (
                 <>
-                  <Link to="/admin/dashboard">Admin Dashboard</Link> /{" "}
-                  <Link to="/admin/history">Admin History</Link>
+                  <Link to="/admin/dashboard" className={location.pathname === "/admin/dashboard" ? "active-link": ""}>Admin Dashboard</Link> /{" "}
+                  <Link to="/admin/history" className={location.pathname === "/admin/history" ? "active-link": ""}>Admin History</Link>
                 </>
               )}
               {role !== "admin" && (

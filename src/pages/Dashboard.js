@@ -62,15 +62,8 @@ function Dashboard() {
 
   // Calculate team totals
   const houses = scoreData.houses || [];
-  let redTotal = 0;
-  let whiteTotal = 0;
-  houses.forEach((house) => {
-    if (redDorms.includes(house.name)) {
-      redTotal += Number(house.score);
-    } else {
-      whiteTotal += Number(house.score);
-    }
-  });
+  const redScore = scoreData.red;
+  const whiteScore = scoreData.white;
 
   // Sort houses descending by score
   const sortedHouses = houses.slice().sort((a, b) => b.score - a.score);
@@ -85,11 +78,11 @@ function Dashboard() {
       <div className="score-boxes">
         <div className="score-box red">
           <h2>RED</h2>
-          <div className="score">{redTotal}</div>
+          <div className="score">{redScore}</div>
         </div>
         <div className="score-box white">
           <h2>WHITE</h2>
-          <div className="score">{whiteTotal}</div>
+          <div className="score">{whiteScore}</div>
         </div>
       </div>
       <div className="updated-date">
