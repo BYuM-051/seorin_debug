@@ -17,6 +17,7 @@ function App() {
   const { role, currentUser } = useAuth();
   // Hide header on login and signup pages
   const showHeader = location.pathname !== "/login" && location.pathname !== "/signup";
+  const showNav = role === "admin";
   const { logout } = useAuth();
   const handleLogout = ()=>{
     logout();
@@ -26,9 +27,10 @@ function App() {
       {showHeader && (
         <header>
           <div className="titleDIV">
-            <h1>Fay</h1>
+            <img className="logoIMG" src="/logoHeader.png"/>
+            <h1>SCOREBOARD</h1>
           </div>
-          <div className="navigationBar">
+          {showNav && (<div className="navigationBar">
             <nav className="navLeft">
               {role === "admin" && (
                 <>
@@ -47,6 +49,7 @@ function App() {
               {(role==="admin" && (<a onClick={handleLogout}>logout</a>))}
             </div>
           </div>
+          )}
         </header>
       )}
       <Routes>

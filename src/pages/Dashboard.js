@@ -74,11 +74,14 @@ function Dashboard() {
 
   // Sort houses descending by score
   const sortedHouses = houses.slice().sort((a, b) => b.score - a.score);
+  const half = Math.ceil(sortedHouses.length / 2);
+  const leftColumn = sortedHouses.slice(0, half);
+  const rightColumn = sortedHouses.slice(half);
 
   return (
     
     <div className="container">
-      <h2>Check who's winning!</h2>
+      <h2 className = "subHeading">Color Competition</h2>
       <div className="score-boxes">
         <div className="score-box red">
           <h2>RED</h2>
@@ -92,19 +95,34 @@ function Dashboard() {
       <div className="updated-date">
         Updated: {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : "No date available"}
       </div>
-      <h3>Current Winning House</h3>
+      <h2 className = "subHeading">Morty Cup</h2>
       <div className="houses-container">
-        {sortedHouses.length > 0 ? (
-          sortedHouses.map((house, idx) => (
-            <div key={idx} className="house-item">
-              <div className="house-rank">{idx + 1}</div>
-              <div className="house-name">{house.name}</div>
-              <div className="house-score">{house.score}</div>
-            </div>
-          ))
-        ) : (
-          <p>No house data available.</p>
-        )}
+      <div className="houses-columns">
+        <div className="house-col">
+          {leftColumn.map((house, idx) => {
+            const rank = idx + 1;
+            return (
+              <div className="house-item" key={rank}>
+                <div className={`house-rank rank-${rank}`}>{rank}</div>
+                <div className="house-name">{house.name}</div>
+                <div className="house-score">{house.score}</div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="house-col">
+          {rightColumn.map((house, idx) => {
+            const rank = idx + half + 1;
+            return (
+              <div className="house-item" key={rank}>
+                <div className={`house-rank rank-${rank}`}>{rank}</div>
+                <div className="house-name">{house.name}</div>
+                <div className="house-score">{house.score}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
       </div>
     </div>
   );

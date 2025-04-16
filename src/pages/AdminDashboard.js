@@ -51,6 +51,7 @@ function AdminDashboard() {
   }, []);
 
   // Compute team totals from houses array
+  /*
   const computeTotals = (houses) => {
     let redTotal = 0;
     let whiteTotal = 0;
@@ -63,17 +64,17 @@ function AdminDashboard() {
     });
     return { redTotal, whiteTotal };
   };
-
-  const currentHouses = showModal ? form.houses : data?.houses || [];
-  const { redTotal, whiteTotal } = computeTotals(currentHouses);
+  */
+  //const currentHouses = showModal ? form.houses : data?.houses || [];
+  //const { redTotal, whiteTotal } = computeTotals(currentHouses);
 
   // Open modal with current data
   const openModal = () => {
     if (!data) return;
     const sortedHouses = data.houses ? structuredClone(data.houses.slice()).sort((a, b) => b.score - a.score) : [];
     setForm({
-      red: redTotal,
-      white: whiteTotal,
+      red: redScore,
+      white: whiteScore,
       houses: sortedHouses,
     });
     setShowModal(true);
@@ -123,26 +124,28 @@ function AdminDashboard() {
   const half = Math.ceil(sortedHouses.length / 2);
   const leftColumn = sortedHouses.slice(0, half);
   const rightColumn = sortedHouses.slice(half);
+  const redScore = data.red;
+  const whiteScore = data.white;
   
   return (
     <div className="container">
       <div className="midtitleDIV">
-        <h2>Admin Dashboard</h2>
+        <h2 className="subHeading">Admin Dashboard</h2>
         <button className="edit-button" onClick={openModal} title="Edit Scores">
           Edit
         </button>
       </div>
       <div className="score-boxes">
         <div className="score-box red">
-          <span>RED</span>
-          <div className="score">{redTotal}</div>
+          <div>RED</div>
+          <span className="score">{redScore}</span>
         </div>
         <div className="score-box white">
-          <a>WHITE</a>
-          <div className="score">{whiteTotal}</div>
+          <div>WHITE</div>
+          <span className="score">{whiteScore}</span>
         </div>
       </div>
-      <h3>Current Winning House</h3>
+      <h2 className="subHeading">Current Winning House</h2>
       <div className="houses-container">
       <div className="houses-columns">
         <div className="house-col">
@@ -179,11 +182,11 @@ function AdminDashboard() {
             <div className="modal-form">
               <label>
                 Red:
-                <input type="number" name="red" disabled value={form.red} onChange={handleTeamChange} />
+                <input type="number" name="red" value={form.red} onChange={handleTeamChange} />
               </label>
               <label>
                 White:
-                <input type="number" name="white" disabled value={form.white} onChange={handleTeamChange} />
+                <input type="number" name="white" value={form.white} onChange={handleTeamChange} />
               </label>
               <h4>House Scores</h4>
               {form.houses.map((house, idx) => (

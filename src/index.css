@@ -16,14 +16,22 @@ body {
    2. HEADER (if used)
 ================================= */
 .titleDIV {
-  background: #d9d9d9;
+  background: #892233;
   padding: 1rem 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color:#fff;
 }
-header h1 {
+.titleDIV h1 {
   margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.logoIMG {
+  height : 3rem;
 }
 
 .navigationBar
@@ -59,10 +67,16 @@ header h1 {
   border-radius: 4px;
   overflow-x: hidden;
 }
+
 .midtitleDIV
 {
   display: flex;
   justify-content: space-between;
+}
+
+.subHeading
+{
+  margin-left: 1em;
 }
 /* ===============================
    4. SCORE BOXES (RED/WHITE)
@@ -72,28 +86,36 @@ header h1 {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
+  padding: 2rem;
   
 }
 
 .score-box {
   flex: 1;
   min-width: 200px;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
   border: 1px solid #ddd;
   box-shadow: 0px 3px 3px 1px grey;
+  margin: 1rem;
 }
+
+.score-box div{
+  font-size: 2.5rem;
+}
+
+.score-box span
+{
+  font-size: 4rem;
+}
+
 .score-box.red {
   background-color: #f2d7d5;
 }
 .score-box.white {
   background-color: #f9f9f9;
-}
-.score {
-  font-size: 2.5rem;
-  font-weight: bold;
 }
 
 /* ===============================
@@ -125,21 +147,24 @@ header h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 2rem 1rem 2rem 1rem;
 }
 .house-item {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   gap: 0.5rem;
   white-space: nowrap;
   box-shadow: 0px 3px 3px 1px grey;
+  margin: 0.1rem;
+  font-size: 1.5rem;
 }
 .house-rank {
-  width: 24px;
-  height: 24px;
-  border-radius: 10%;
+  width: 30px;
+  height: 30px;
+  border-radius: 20%;
   background: #DDD;
   color: #000;
   display: flex;
@@ -147,7 +172,6 @@ header h1 {
   justify-content: center;
   font-weight: bold;
   
-  font-size: 0.8rem;
 }
 .rank-1 {
   background-color: olive;

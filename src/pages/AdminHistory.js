@@ -40,17 +40,16 @@ function AdminHistory() {
   const handleAddSampleHistory = async () => {
     const sampleRecord = {
       year: new Date().getFullYear(),
-      team: Math.random() > 0.5 ? "RED" : "WHITE",
-      house: ["West House", "Village Girls", "Village Boys", "Dinning"]
-      [Math.floor(Math.random() * 4)]
+      team: "RED",
+      house: "West House"
     };
 
     try {
       await push(ref(db, "history"), sampleRecord);
-      alert("Sample history record added!");
     } catch (error) {
       console.error("Error adding sample history record:", error);
     }
+
   };
 
   return (
@@ -67,14 +66,6 @@ function AdminHistory() {
         <div className="history-stat-box whiteish">{whiteWins} times</div>
       </div>
       <table className="history-list">
-        <thead>
-          <tr>
-            <th style={{ width: "40px" }}></th>
-            <th>Year</th>
-            <th>Team</th>
-            <th>Dormitory</th>
-          </tr>
-        </thead>
         <tbody>
           {records.map((record) => {
             const isEditing = editingId === record.id;
