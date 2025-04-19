@@ -15,11 +15,21 @@ body {
 /* ===============================
    2. HEADER (if used)
 ================================= */
+.titleSPAN {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: white;
+  font-size: 5rem;
+  z-index: 1;
+  white-space: nowrap;
+}
 .titleDIV {
   position: relative;
   background: #892233;
   padding: 1rem 2rem;
-  height: 4rem;
+  height: 7rem;
   display: flex;
   align-items: center;
 }
@@ -28,18 +38,6 @@ body {
   height: 3rem;
   z-index: 2;
 }
-
-.titleDIV h1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  color: white;
-  font-size: 2rem;
-  z-index: 1;
-  white-space: nowrap;
-}
-
 .navigationBar
 {
   background : #fff;
@@ -203,6 +201,7 @@ body {
 }
 .house-name {
   flex: 1;
+  font-weight: bold;
 }
 .house-score {
   font-weight: bold;

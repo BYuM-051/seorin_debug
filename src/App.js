@@ -27,7 +27,7 @@ function App() {
         <header>
           <div className="titleDIV">
             <img className="logoIMG" src="/logoHeader.png" alt="Logo"/>
-            <h1>SCOREBOARD</h1>
+            <span className="titleSPAN">SCOREBOARD</span>
           </div>
           {showNav && (<div className="navigationBar">
             <nav className="navLeft">
