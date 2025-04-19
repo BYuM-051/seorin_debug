@@ -103,7 +103,7 @@ body {
 .score-box {
   flex: 1;
   min-width: 200px;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
@@ -112,8 +112,17 @@ body {
   margin: 5rem;
 }
 
-.score{
+.score {
+  display: flex;
+  justify-content: center;
   font-size: 5rem;
+  font-weight: bold;
+}
+
+.score-digit {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
 }
 
 .scoreTitle{
@@ -204,11 +213,19 @@ body {
   font-weight: bold;
 }
 
-/* deprecated 0419
 .house-score {
+  font-size: 2rem;
   font-weight: bold;
+  display: flex;
 }
-*/
+
+.house-digit {
+  height: 2rem;
+  width: 1.5ch;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .animatedTextWrapper {
   display: flex;
   justify-content: center;

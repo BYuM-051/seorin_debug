@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue, set } from "firebase/database";
-import { motion } from "framer-motion";
 import "../index.css";
 import RollingNumber from "../components/RollingNumber";
 
@@ -81,11 +80,17 @@ function Dashboard() {
       <div className="score-boxes">
         <div className="score-box red">
           <div className="scoreTitle">RED</div>
-          <div className="score">{redScore}</div>
+          <RollingNumber
+          className="score"
+          target={redScore}
+          digitClass="score-digit"/>
         </div>
         <div className="score-box white">
           <div className="scoreTitle">WHITE</div>
-          <div className="score">{whiteScore}</div>
+          <RollingNumber
+          className="score"
+          target={whiteScore}
+          digitClass="score-digit"/>
         </div>
       </div>
       
@@ -96,15 +101,14 @@ function Dashboard() {
           {leftColumn.map((house, idx) => {
             const rank = idx + 1;
             return (
-              <div className="house-item" 
-              key={house.score}
-              initial={{scale: 1}}
-              animate={{scale: [1.3, 1]}}
-              transition={{duration: 1}}
-              >
+              <div className="house-item" >
                 <div className={`house-rank rank-${rank}`}>{rank}</div>
                 <div className="house-name">{house.name}</div>
-                <RollingNumber target={house.score}/>
+                <RollingNumber 
+                className="house-score"
+                digitClass="house-digit"
+                target={house.score}
+                />
               </div>
             );
           })}
@@ -113,15 +117,13 @@ function Dashboard() {
           {rightColumn.map((house, idx) => {
             const rank = idx + half + 1;
             return (
-              <div className="house-item" 
-              key={house.score}
-              initial={{scale: 1}}
-              animate={{scale: [1.3, 1]}}
-              transition={{duration: 1}}
-              >
+              <div className="house-item" >
                 <div className={`house-rank rank-${rank}`}>{rank}</div>
                 <div className="house-name">{house.name}</div>
-                <RollingNumber target={house.score}/>
+                <RollingNumber 
+                className="house-score"
+                digitClass="house-digit"
+                target={house.score}/>
               </div>
             );
           })}
