@@ -203,8 +203,27 @@ body {
   flex: 1;
   font-weight: bold;
 }
+
+/* deprecated 0419
 .house-score {
   font-weight: bold;
+}
+*/
+.animatedTextWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.animatedText {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  display: inline-block;
 }
 
 /* ===============================

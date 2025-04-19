@@ -1,9 +1,10 @@
 // src/pages/Dashboard.js
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue, set } from "firebase/database";
 import { motion } from "framer-motion";
 import "../index.css";
+import RollingNumber from "../components/RollingNumber";
 
 function Dashboard() {
   const [scoreData, setScoreData] = useState(null);
@@ -95,7 +96,7 @@ function Dashboard() {
           {leftColumn.map((house, idx) => {
             const rank = idx + 1;
             return (
-              <motion.div className="house-item" 
+              <div className="house-item" 
               key={house.score}
               initial={{scale: 1}}
               animate={{scale: [1.3, 1]}}
@@ -103,16 +104,8 @@ function Dashboard() {
               >
                 <div className={`house-rank rank-${rank}`}>{rank}</div>
                 <div className="house-name">{house.name}</div>
-                <motion.div 
-                className="house-score"
-                key={house.score}
-                initial={{scale: 1}}
-                animate={{scale: [1.3, 1]}}
-                transition={{duration: 1}}
-                >
-                  {house.score}
-                </motion.div>
-              </motion.div>
+                <RollingNumber target={house.score}/>
+              </div>
             );
           })}
         </div>
@@ -120,7 +113,7 @@ function Dashboard() {
           {rightColumn.map((house, idx) => {
             const rank = idx + half + 1;
             return (
-              <motion.div className="house-item" 
+              <div className="house-item" 
               key={house.score}
               initial={{scale: 1}}
               animate={{scale: [1.3, 1]}}
@@ -128,16 +121,8 @@ function Dashboard() {
               >
                 <div className={`house-rank rank-${rank}`}>{rank}</div>
                 <div className="house-name">{house.name}</div>
-                <motion.div 
-                className="house-score"
-                key={house.score}
-                initial={{scale: 1}}
-                animate={{scale: [1.3, 1]}}
-                transition={{duration: 1}}
-                >
-                  {house.score}
-                </motion.div>
-              </motion.div>
+                <RollingNumber target={house.score}/>
+              </div>
             );
           })}
         </div>
