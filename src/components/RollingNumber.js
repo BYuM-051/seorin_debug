@@ -118,7 +118,7 @@ const RollingNumber = ({
   digitStyle = {},
 }) => {
   const [digits, setDigits] = useState([]);
-  const duration = 1000;
+  const duration = 2000;
 
   useEffect(() => {
     const arr = String(target).split("").map(Number);

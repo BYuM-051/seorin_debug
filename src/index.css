@@ -24,6 +24,7 @@ body {
   font-size: 5rem;
   z-index: 1;
   white-space: nowrap;
+  font-weight: bold;
 }
 .titleDIV {
   position: relative;
@@ -103,7 +104,7 @@ body {
 .score-box {
   flex: 1;
   min-width: 200px;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
@@ -486,4 +487,27 @@ body {
   font-weight: 500;
   margin: 0.8rem;
   height: 5rem;
+}
+
+/*============================
+   11. USER MODAL (POPUP) STYLES
+==============================*/
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 4rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  font-weight: bold;
 }
