@@ -146,7 +146,7 @@ function Dashboard() {
                         <FaTrophy className={`trophy trophyrank-${rank}`} />
                       )}
                     </div>
-                    <div className="house-lastupdated-score">
+                    <div className="house-lastupdated-score" style={house.lastChangedAmount > 0 ? {} : {color:"red"}}>
                       ({house.lastChangedAmount > 0 ? "+" : "" }{house.lastChangedAmount})
                     </div>
                     <RollingNumber
