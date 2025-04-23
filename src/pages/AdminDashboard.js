@@ -83,12 +83,28 @@ function AdminDashboard() {
 
   // Save changes to Realtime Database
   const handleSave = async () => {
-    
+    const updatedHouses = form.houses.map((house) => {
+      const original = data.houses.find((h) => h.name === house.name);
+      const oldScore = original ? original.score : 0;
+      const diff = house.score - oldScore;
+      if(diff !== 0){
+        return {
+          ...house,
+          lastChangedAmount : diff,
+        };
+      }
+      else
+      {
+        return house;
+      }
+    });
+
+
     try {
       await set(ref(db, "scores"), {
         red: form.red,
         white: form.white,
-        houses: form.houses,
+        houses: updatedHouses,
         updatedDate: new Date().toISOString(),
       });
       setShowModal(false);
@@ -99,17 +115,7 @@ function AdminDashboard() {
 
   const handleHouseChange = (index, value) => {
     const updatedHouses = [...form.houses];
-    const newScore = Number(value);
-    const oldScore = updatedHouses[index].score;
-    
-    if(newScore !== oldScore){
-      updatedHouses[index] = {
-        ...updatedHouses[index],
-        score : newScore,
-        lastChangedAmount: (newScore - oldScore),
-      };
-    }
-
+    updatedHouses[index].score = Number(value);
     setForm({ ...form, houses: updatedHouses });
   };
 
