@@ -144,11 +144,9 @@ function Dashboard() {
                         <FaTrophy className={`trophy trophyrank-${rank}`} />
                       )}
                     </div>
-                    <RollingNumber 
-                      className="house-lastupdated-score"
-                      digitClass="house-digit"
-                      target={house.lastChangedAmount}
-                    />
+                    <div className="house-lastupdated-score">
+                      ({house.lastChangedAmount})
+                    </div>
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
@@ -168,11 +166,9 @@ function Dashboard() {
                     <div className="house-name-wrapper">
                       <span className="house-name">{house.name}</span>
                     </div>
-                    <RollingNumber 
-                      className="house-lastupdated-score"
-                      digitClass="house-digit"
-                      target={house.lastChangedAmount}
-                    />
+                    <div className="house-lastupdated-score">
+                      ({house.lastChangedAmount})
+                    </div>
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
