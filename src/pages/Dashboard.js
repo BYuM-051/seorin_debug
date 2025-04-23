@@ -144,6 +144,9 @@ function Dashboard() {
                         <FaTrophy className={`trophy trophyrank-${rank}`} />
                       )}
                     </div>
+                    <div className="house-lastupdated-score">
+                      ({house.lastUpdatedScore||0})
+                    </div>
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
@@ -158,9 +161,14 @@ function Dashboard() {
               {rightColumn.map((house, idx) => {
                 const rank = idx + half + 1;
                 return (
-                  <div className="house-item" key={house.name}>
+                  <div className="house-item">
                     <div className={`house-rank rank-${rank}`}>{rank}</div>
-                    <div className="house-name">{house.name}</div>
+                    <div className="house-name-wrapper">
+                      <span className="house-name">{house.name}</span>
+                    </div>
+                    <div className="house-lastupdated-score">
+                      ({house.lastUpdatedScore||0})
+                    </div>
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"

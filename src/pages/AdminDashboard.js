@@ -99,7 +99,22 @@ function AdminDashboard() {
 
   const handleHouseChange = (index, value) => {
     const updatedHouses = [...form.houses];
-    updatedHouses[index].score = Number(value);
+    const newScore = Number(value);
+    const oldScore = updatedHouses[index].score;
+    
+    if(newScore !== oldScore){
+      updatedHouses[index] = {
+        ...updatedHouses[index],
+        score : newScore,
+        lastUpdatedScore : (newScore - oldScore),
+      };
+    } else {
+      updatedHouses[index] = {
+        ...updatedHouses[index],
+        score : newScore,
+      };
+    }
+
     setForm({ ...form, houses: updatedHouses });
   };
 
