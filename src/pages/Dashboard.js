@@ -145,7 +145,7 @@ function Dashboard() {
                       )}
                     </div>
                     <div className="house-lastupdated-score">
-                      ({house.lastUpdatedScore||0})
+                      ({house.lastChangedAmount})
                     </div>
                     <RollingNumber
                       className="house-score"
@@ -167,7 +167,7 @@ function Dashboard() {
                       <span className="house-name">{house.name}</span>
                     </div>
                     <div className="house-lastupdated-score">
-                      ({house.lastUpdatedScore||0})
+                      ({house.lastChangedAmount})
                     </div>
                     <RollingNumber
                       className="house-score"

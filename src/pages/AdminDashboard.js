@@ -106,12 +106,7 @@ function AdminDashboard() {
       updatedHouses[index] = {
         ...updatedHouses[index],
         score : newScore,
-        lastUpdatedScore : (newScore - oldScore),
-      };
-    } else {
-      updatedHouses[index] = {
-        ...updatedHouses[index],
-        score : newScore,
+        lastChangedAmount: (newScore - oldScore),
       };
     }
 
