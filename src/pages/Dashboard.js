@@ -5,6 +5,8 @@ import { ref, onValue, set } from "firebase/database";
 import "../index.css";
 import RollingNumber from "../components/RollingNumber";
 import { FaTrophy } from "react-icons/fa";
+import { style } from "framer-motion/client";
+import { color } from "framer-motion";
 
 function Dashboard() {
   const [realScoreData, setRealScoreData] = useState(null);
@@ -145,7 +147,7 @@ function Dashboard() {
                       )}
                     </div>
                     <div className="house-lastupdated-score">
-                      ({house.lastChangedAmount})
+                      ({house.lastChangedAmount > 0 ? "+" : "" }{house.lastChangedAmount})
                     </div>
                     <RollingNumber
                       className="house-score"
@@ -166,8 +168,8 @@ function Dashboard() {
                     <div className="house-name-wrapper">
                       <span className="house-name">{house.name}</span>
                     </div>
-                    <div className="house-lastupdated-score">
-                      ({house.lastChangedAmount})
+                    <div className="house-lastupdated-score" style={house.lastChangedAmount > 0 ? {} : {color:"red"}}>
+                      ({house.lastChangedAmount > 0 ? "+" : "" }{house.lastChangedAmount})
                     </div>
                     <RollingNumber
                       className="house-score"
