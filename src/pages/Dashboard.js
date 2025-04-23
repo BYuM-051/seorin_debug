@@ -118,19 +118,19 @@ function Dashboard() {
         <div className="updated-date">
           Updated: {realScoreData.updatedDate ? new Date(realScoreData.updatedDate).toLocaleString() : "No date available"}
         </div>
-        <h2 className="subHeading">Color Competition</h2>
+        <div className="subHeading">Color Competition</div>
         <div className="score-boxes">
           <div className="score-box red">
             <div className="scoreTitle">RED</div>
-            <RollingNumber className="score" target={redScore} digitClass="score-digit" />
+            <RollingNumber className="score" key={redScore} target={redScore} digitClass="score-digit" />
           </div>
           <div className="score-box white">
             <div className="scoreTitle">WHITE</div>
-            <RollingNumber className="score" target={whiteScore} digitClass="score-digit" />
+            <RollingNumber className="score" key={whiteScore} target={whiteScore} digitClass="score-digit" />
           </div>
         </div>
 
-        <h2 className="subHeading">Morty Cup</h2>
+        <div className="subHeading">Morty Cup</div>
         <div className="houses-container">
           <div className="houses-columns">
             <div className="house-col">
@@ -143,6 +143,7 @@ function Dashboard() {
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
+                      key={house.score}
                       target={house.score}
                     />
                   </div>
@@ -159,6 +160,7 @@ function Dashboard() {
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
+                      key={house.score}
                       target={house.score}
                     />
                   </div>

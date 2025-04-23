@@ -11,75 +11,68 @@ how to use :
 
 import React, { useEffect, useRef, useState } from "react";
 
-// 단일 자리 숫자 (Digit)
-const RawRollingDigit = ({
+// 단일 숫자 자리
+const RollingDigit = React.memo(function RollingDigit({
   digit,
-  duration,
-  delay,
+  duration = 1500,
+  delay = 0,
   digitClass = "",
   digitStyle = {},
-}) => {
+}) {
   const [digitHeight, setDigitHeight] = useState(null);
-  const [digitList, setDigitList] = useState([]);
+  const [digits, setDigits] = useState([]);
   const [translateY, setTranslateY] = useState(0);
   const measureRef = useRef(null);
 
-  // 1️⃣ 실제 높이 측정
+  // 높이 측정
   useEffect(() => {
     if (measureRef.current && digitHeight === null) {
-      const height = measureRef.current.offsetHeight;
-      if (height > 0) {
-        setDigitHeight(height);
-      }
+      const h = measureRef.current.offsetHeight;
+      if (h > 0) setDigitHeight(h);
     }
   }, [digitHeight]);
 
-  // 2️⃣ digit 변경되면 애니메이션 준비
+  // digit 바뀌면 애니메이션 셋업
   useEffect(() => {
     if (digitHeight === null) return;
 
-    const loops = 4;
-    const digits = [];
-    for (let i = 0; i < loops * 10; i++) {
-      digits.push(i % 10);
-    }
-    digits.push(digit);
+    const loop = 4;
+    const digitList = Array.from({ length: loop * 10 }, (_, i) => i % 10).concat(digit);
 
-    setDigitList(digits);
+    setDigits(digitList);
     setTranslateY(0);
 
     const timeout = setTimeout(() => {
       requestAnimationFrame(() => {
-        setTranslateY(digits.length - 1);
+        setTranslateY(digitList.length - 1);
       });
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [digit, delay, digitHeight]);
+  }, [digit, digitHeight, delay]);
 
   return (
     <div
       style={{
         overflow: "hidden",
         width: "1.2ch",
-        position: "relative",
         height: digitHeight ?? "auto",
+        position: "relative",
       }}
     >
-      {/* ✅ strip을 절대 위치로 고정 */}
-      {digitHeight !== null && digitList.length > 0 && (
+      {digitHeight !== null && (
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
-            transform: `translateY(-${translateY * digitHeight}px)`,
-            transition: `transform ${duration}ms ease-in-out`,
             display: "flex",
             flexDirection: "column",
+            transform: `translateY(-${translateY * digitHeight}px)`,
+            transition: `transform ${duration}ms ease-in-out`,
           }}
         >
-          {digitList.map((d, i) => (
+          {digits.map((d, i) => (
             <div className={digitClass} style={digitStyle} key={i}>
               {d}
             </div>
@@ -87,14 +80,14 @@ const RawRollingDigit = ({
         </div>
       )}
 
-      {/* ✨ 측정용 보이지 않는 숫자 */}
+      {/* 높이 측정용 */}
       <div
         ref={measureRef}
         className={digitClass}
         style={{
           ...digitStyle,
-          position: "absolute",
           visibility: "hidden",
+          position: "absolute",
           pointerEvents: "none",
           whiteSpace: "nowrap",
         }}
@@ -103,49 +96,48 @@ const RawRollingDigit = ({
       </div>
     </div>
   );
-};
-
-const RollingDigit = React.memo(RawRollingDigit, (prev, next) => {
-  return prev.digit === next.digit;
 });
 
-// 전체 숫자 구성
-const RollingNumber = ({
+// 전체 숫자
+export default function RollingNumber({
   target,
   className = "",
   style = {},
   digitClass = "",
   digitStyle = {},
-}) => {
+}) {
   const [digits, setDigits] = useState([]);
-  const duration = 2000;
+  const prevTargetRef = useRef(null);
 
   useEffect(() => {
-    const arr = String(target).split("").map(Number);
-    setDigits(arr);
+    const newDigits = String(target).split("").map(Number);
+
+    setDigits((prev) => {
+      const isSame =
+        prev.length === newDigits.length &&
+        prev.every((v, i) => v === newDigits[i]);
+
+      if (isSame) return prev;
+      return newDigits;
+    });
+
+    prevTargetRef.current = target;
   }, [target]);
 
   return (
     <div
       className={className}
-      style={{
-        display: "flex",
-        gap: "0.2rem",
-        ...style,
-      }}
+      style={{ display: "flex", gap: "0.2rem", ...style }}
     >
       {digits.map((digit, index) => (
         <RollingDigit
-          key={index}
+          key={`${index}-${digit}`}
           digit={digit}
-          duration={duration}
-          delay={(50 + Math.random() * 100) * index}
           digitClass={digitClass}
           digitStyle={digitStyle}
+          delay={index * 100}
         />
       ))}
     </div>
   );
-};
-
-export default RollingNumber;
+}
