@@ -4,6 +4,7 @@ import { db } from "../firebase/firebase";
 import { ref, onValue, set } from "firebase/database";
 import "../index.css";
 import RollingNumber from "../components/RollingNumber";
+import { FaTrophy } from "react-icons/fa";
 
 function Dashboard() {
   const [realScoreData, setRealScoreData] = useState(null);
@@ -64,10 +65,8 @@ function Dashboard() {
       
         setTimeout(() => {
           setShowModal(false);
-      
-          setTimeout(() => {
-            setDisplayedScoreData(data);
-          }, 300);
+          setDisplayedScoreData(data);
+
         }, 3000);
       }
     });
@@ -115,8 +114,8 @@ function Dashboard() {
   return (
     <>
       <div className="container">
-        <div className="updated-date">
-          Updated: {realScoreData.updatedDate ? new Date(realScoreData.updatedDate).toLocaleString() : "No date available"}
+        <div className="last-update-date">
+          Last Update : {realScoreData.updatedDate ? new Date(realScoreData.updatedDate).toLocaleString() : "No date available"}
         </div>
         <div className="subHeading">Color Competition</div>
         <div className="score-boxes">
@@ -137,13 +136,18 @@ function Dashboard() {
               {leftColumn.map((house, idx) => {
                 const rank = idx + 1;
                 return (
-                  <div className="house-item" key={house.name}>
+                  <div className="house-item">
                     <div className={`house-rank rank-${rank}`}>{rank}</div>
-                    <div className="house-name">{house.name}</div>
+                    <div className="house-name-wrapper">
+                      <span className="house-name">{house.name}</span>
+                      {rank <= 3 && (
+                        <FaTrophy className={`trophy trophyrank-${rank}`} />
+                      )}
+                    </div>
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
-                      key={house.score}
+                      key={`${house.name}-${house.score}`}
                       target={house.score}
                     />
                   </div>
@@ -160,7 +164,7 @@ function Dashboard() {
                     <RollingNumber
                       className="house-score"
                       digitClass="house-digit"
-                      key={house.score}
+                      key={`${house.name}-${house.score}`}
                       target={house.score}
                     />
                   </div>

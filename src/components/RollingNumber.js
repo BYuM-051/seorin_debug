@@ -24,7 +24,6 @@ const RollingDigit = React.memo(function RollingDigit({
   const [translateY, setTranslateY] = useState(0);
   const measureRef = useRef(null);
 
-  // 높이 측정
   useEffect(() => {
     if (measureRef.current && digitHeight === null) {
       const h = measureRef.current.offsetHeight;
@@ -32,7 +31,6 @@ const RollingDigit = React.memo(function RollingDigit({
     }
   }, [digitHeight]);
 
-  // digit 바뀌면 애니메이션 셋업
   useEffect(() => {
     if (digitHeight === null) return;
 
@@ -98,30 +96,18 @@ const RollingDigit = React.memo(function RollingDigit({
   );
 });
 
-// 전체 숫자
 export default function RollingNumber({
-  target,
+  target = 0,
   className = "",
   style = {},
   digitClass = "",
   digitStyle = {},
 }) {
   const [digits, setDigits] = useState([]);
-  const prevTargetRef = useRef(null);
 
   useEffect(() => {
     const newDigits = String(target).split("").map(Number);
-
-    setDigits((prev) => {
-      const isSame =
-        prev.length === newDigits.length &&
-        prev.every((v, i) => v === newDigits[i]);
-
-      if (isSame) return prev;
-      return newDigits;
-    });
-
-    prevTargetRef.current = target;
+    setDigits(newDigits);
   }, [target]);
 
   return (
