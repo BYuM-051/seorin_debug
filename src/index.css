@@ -212,11 +212,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 3px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  color: #ddd;
   background-color: #ddd;
 }
 
-
+/*
 .rank-1 {
   background-color: gold;
   color : white;
@@ -229,6 +232,7 @@ body {
   background-color: #CD7F32;
   color : white;
 }
+*/
 .house-name-wrapper {
   flex: 1;
   display: flex;

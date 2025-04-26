@@ -139,7 +139,7 @@ function Dashboard() {
                 const rank = idx + 1;
                 return (
                   <div className="house-item">
-                    <div className={`house-rank rank-${rank}`}>{rank}</div>
+                    <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
                     <div className="house-name-wrapper">
                       <span className="house-name">{house.name}</span>
                       {rank <= 3 && (
@@ -164,7 +164,7 @@ function Dashboard() {
                 const rank = idx + half + 1;
                 return (
                   <div className="house-item">
-                    <div className={`house-rank rank-${rank}`}>{rank}</div>
+                    <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
                     <div className="house-name-wrapper">
                       <span className="house-name">{house.name}</span>
                     </div>
