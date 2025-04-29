@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import PrivateRoute from "./components/PrivateRoute";
 import AdminRoute from "./components/AdminRoute";
 import UserRoute from "./components/UserRoute";
+import Header from "./components/Header";
 import "./index.css";
 import BackgroundBadge from "./components/AppContainer";
 
@@ -18,39 +19,18 @@ function App() {
   const { role, currentUser, logout } = useAuth();
   // Hide header on login and signup pages
   const showHeader = location.pathname !== "/login" && location.pathname !== "/signup";
-  const showNav = role === "admin";
   const handleLogout = ()=>{
     logout();
   };
   return (
     <div>
-      {showHeader && (
-        <header>
-          <div className="titleDIV">
-            <img className="logoIMG" src="/logoHeader.png" alt="Logo"/>
-            <span className="titleSPAN">SCOREBOARD</span>
-          </div>
-          {showNav && (<div className="navigationBar">
-            <nav className="navLeft">
-              {role === "admin" && (
-                <>
-                  <Link to="/admin/dashboard" className={location.pathname === "/admin/dashboard" ? "active-link": ""}>Admin Dashboard</Link> /{" "}
-                  <Link to="/admin/history" className={location.pathname === "/admin/history" ? "active-link": ""}>Admin History</Link>
-                </>
-              )}
-              {role !== "admin" && (
-                <>
-                  <Link to="/">Dashboard</Link> /{" "}
-                  <Link to="/history">History</Link>
-                </>
-              )}
-            </nav>
-            <div className="navRight">
-              {(role==="admin" && (<a onClick={handleLogout}>logout</a>))}
-            </div>
-          </div>
-          )}
-        </header>
+      {(
+        <Header
+          showHeader={showHeader}
+          role={role}
+          location={location}
+          handleLogout={handleLogout}
+          Link={Link}/>
       )}
       <div className="app-container">
         <BackgroundBadge imgUrl="/logoHeader.png"/>
