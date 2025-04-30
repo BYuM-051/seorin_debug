@@ -8,10 +8,10 @@ export default function MobileHeader(){
             <div className="titleDIV">
                 <span className="titleSPAN">SCOREBOARD</span>
             </div>
-            <div className="mobile-nav">
+            {false && <div className="mobile-nav">
                 <Link to = "/" className={location.pathname === "/" ? "active-link" : ""}>🏠 Dashboard</Link>
                 <Link to = "/history" className={location.pathname === "/history" ? "active-link" : ""}>📜 History</Link>
-            </div>
+            </div>}
         </header>
     );
 }
