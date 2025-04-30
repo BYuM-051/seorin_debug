@@ -503,9 +503,7 @@ body {
   display: flex;
   flex-direction: column;
   gap : 0.8rem;
-  margin-top: 2rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  margin: 2rem 3rem 0rem 3rem;
   text-align: center;
   vertical-align: middle;
 }
@@ -518,7 +516,6 @@ body {
   box-shadow: 0px 3px 3px 1px grey;
   font-size: 2rem;
   font-weight: 500;
-  margin: 0.8rem;
   height: 5rem;
 }
 .history-list-admin {

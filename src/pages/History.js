@@ -27,7 +27,7 @@ function History() {
 
   return (
     <div className="container">
-      <div className="subHeading">History of Winners!</div>
+      <div className="subHeading">History of Winners</div>
       <div className="score-boxes">
         <div className="score-box red">
           <RollingNumber className="score" key={redWins} target={redWins}>{redWins}</RollingNumber>
