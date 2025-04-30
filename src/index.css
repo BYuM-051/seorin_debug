@@ -75,17 +75,6 @@ body {
   pointer-events: none;
 }
 
-
-
-@media (max-width: 900px) {
-  .titleDIV .logoIMG {
-    display: none;
-  }
-  .titleSPAN{
-    font-size: 3rem;
-  }
-}
-
 /* ===============================
    3. CONTAINER
 ================================= */
@@ -129,7 +118,6 @@ body {
 
 .score-box {
   flex: 1;
-  min-width: 200px;
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
@@ -166,7 +154,7 @@ body {
 /* ===============================
    5. UPDATED DATE (For Admin Edit Button)
 ================================= */
-.last-update-date {
+.lastUpdateDate {
   text-align: right;
 }
 
@@ -542,87 +530,3 @@ body {
 /*=========================================
 Mobile <under construction>
 =========================================*/
-
-@media (max-width: 768px) {
-  .container {
-    width: 100%;
-    max-width: 600px;
-    padding: 1rem;
-    box-sizing: border-box;
-  }
-
-  .score-boxes {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .houses-columns {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .house-col {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .house-item {
-    width: 95%;
-    padding: 0.75rem 1rem;
-    margin: 0.5rem 0;
-    font-size: 0.95rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .house-rank {
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .house-name-wrapper {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .house-name {
-    font-size: 1rem;
-  }
-
-  .trophy {
-    font-size: 1.2rem;
-  }
-
-  .house-lastupdated-score {
-    font-size: 0.9rem;
-  }
-
-  .house-score {
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
-
-  .modal-box {
-    width: 80%;
-    font-size: 1rem;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .subHeading {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  .last-update-date {
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-}

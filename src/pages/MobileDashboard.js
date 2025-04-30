@@ -30,12 +30,42 @@ export default function MobileDashboard() {
     }, []);
 
     if(loading) {
-        return <ClipLoader size={40} color="#3498db"/>;
-    }
+        return (
+        <div className="loadingScreen">
+            Now Loading... <ClipLoader size={40} color="#3498db"/>
+        </div>
+    );}
+    const houses = scoreData.houses || [];
+    const redScore = scoreData.red;
+    const whiteScore = scoreData.white;
+    const sortedHouses = houses.slice().sort((a, b) => b.score - a.score);
 
     return(
-        <>
-        </>
+        <div className="container">
+            <div className="lastUpdateDate">Last Update : {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : " No date available"}</div>
+            <div className="mobileVerticalBlank"> </div>
+            <div className="subHeading">Color Competition</div>
+            <div className="score-boxes">
+                <div className="score-box red">
+                    <RollingNumber className="score" key = {redScore} target = {redScore} digitClass="score-digit"/>
+                </div>
+                <div className="score-box white">
+                    <RollingNumber className="score" key = {whiteScore} target = {whiteScore} digitClass="score-digit"/>
+                </div>
+            </div>
 
+            <div className="mobileVerticalBlank"> </div>
+
+            <div className="subHeading">Morty Cup</div>
+            <div className="houses-container"></div>
+                {
+                    sortedHouses.map((house, idx) => {
+                        const rank = idx + 1;
+
+
+                    })
+                }
+        
+        </div>
     );
 }

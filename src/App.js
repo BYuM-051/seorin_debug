@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import "./index.css";
 import useIsMobile from "./hooks/useIsMobile";
 import MobileHeader from "./components/MobileHeader";
+import MobileDashboard from "./pages/MobileDashboard";
 
 function App() {
   const location = useLocation();
@@ -44,7 +45,12 @@ function App() {
           path="/"
           element={
             <UserRoute>
-              <Dashboard />
+              {
+                isMobile ?
+                <MobileDashboard/>
+                :
+                <Dashboard />
+              }
             </UserRoute>
           }
         />

@@ -121,7 +121,7 @@ function Dashboard() {
       <div className="container">
         <div className="midtitleBox">
         <div className="subHeading">Color Competition</div>
-        <div className="last-update-date">
+        <div className="lastUpdateDate">
           Last Update : {realScoreData.updatedDate ? new Date(realScoreData.updatedDate).toLocaleString() : "No date available"}
         </div>
         </div>

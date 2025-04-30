@@ -25,9 +25,11 @@ const RollingDigit = React.memo(function RollingDigit({
   const measureRef = useRef(null);
 
   useEffect(() => {
-    if (measureRef.current && digitHeight === null) {
-      const h = measureRef.current.offsetHeight;
-      if (h > 0) setDigitHeight(h);
+    if (digitHeight === null) {
+      requestAnimationFrame(() => {
+        const h = measureRef.current?.offsetHeight;
+        if (h > 0) setDigitHeight(h);
+      });
     }
   }, [digitHeight]);
 

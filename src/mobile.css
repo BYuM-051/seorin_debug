@@ -1,3 +1,47 @@
 @media (max-width: 768px) {
+    .container {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 20px;
+    }
+  
+    .titleSPAN {
+        font-size: 2.5rem;
+    }
+
+    .subHeading {
+        margin: 0;
+        padding: 0;
+        text-align: start;
+    }
+  
+    .lastUpdateDate {
+        margin: 0;
+        padding: 0;
+    }
+  
+    .score-boxes {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+      }
     
-}
+      .score-box {
+        width: 40% !important;
+        box-sizing: border-box;
+        margin: 0px !important;
+        padding: 1rem !important;
+        font-size: 1.5rem;
+      }
+  
+    .score {
+        font-size: 2rem;         /* ✅ 적당히 줄인 존재감 */
+    }
+
+    .mobileVerticalBlank {
+        margin-top: 3rem;
+    }
+  }
