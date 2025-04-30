@@ -1,4 +1,5 @@
 import React from "react";
+import { useHref } from "react-router-dom";
 
 export default function Header( { showHeader, role, location, handleLogout, Link}) {
     return(
@@ -23,7 +24,8 @@ export default function Header( { showHeader, role, location, handleLogout, Link
                     )}
                 </nav>
                 <div className="navRight">
-                    {(role==="admin" && (<a onClick={handleLogout}>logout</a>))}
+                    {role && (<a onClick={handleLogout}>logout</a>)}
+                    {!role && (<Link to = "/login">login</Link>)}
                 </div>
                 </div>
             )}

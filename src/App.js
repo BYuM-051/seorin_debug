@@ -12,7 +12,6 @@ import AdminRoute from "./components/AdminRoute";
 import UserRoute from "./components/UserRoute";
 import Header from "./components/Header";
 import "./index.css";
-import BackgroundBadge from "./components/AppContainer";
 
 function App() {
   const location = useLocation();
@@ -32,45 +31,42 @@ function App() {
           handleLogout={handleLogout}
           Link={Link}/>
       )}
-      <div className="app-container">
-        <BackgroundBadge imgUrl="/logoHeader.png"/>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/"
-            element={
-              <UserRoute>
-                <Dashboard />
-              </UserRoute>
-            }
-          />
-          <Route
-            path="/history"
-            element={
-              <UserRoute>
-                <History />
-              </UserRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <AdminRoute>
-                <AdminDashboard />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/admin/history"
-            element={
-              <AdminRoute>
-                <AdminHistory />
-              </AdminRoute>
-            }
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/"
+          element={
+            <UserRoute>
+              <Dashboard />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <UserRoute>
+              <History />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/history"
+          element={
+            <AdminRoute>
+              <AdminHistory />
+            </AdminRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
