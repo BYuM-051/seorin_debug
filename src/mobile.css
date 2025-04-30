@@ -10,6 +10,10 @@
         font-size: 2.5rem;
     }
 
+    .mobileVerticalBlank {
+        margin-top: 1.5rem;
+    }
+
     .subHeading {
         margin: 0;
         padding: 0;
@@ -27,21 +31,23 @@
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         align-items: stretch !important;
-      }
+    }
     
-      .score-box {
+    .score-box {
         width: 40% !important;
         box-sizing: border-box;
         margin: 0px !important;
         padding: 1rem !important;
         font-size: 1.5rem;
-      }
+    }
+
+    .scoreTitle {
+        font-size: 1.6rem;
+    }
   
     .score {
         font-size: 2rem;         /* ✅ 적당히 줄인 존재감 */
     }
 
-    .mobileVerticalBlank {
-        margin-top: 3rem;
-    }
+    
   }

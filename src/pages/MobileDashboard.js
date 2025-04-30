@@ -47,9 +47,11 @@ export default function MobileDashboard() {
             <div className="subHeading">Color Competition</div>
             <div className="score-boxes">
                 <div className="score-box red">
+                    <div className="scoreTitle">RED</div>
                     <RollingNumber className="score" key = {redScore} target = {redScore} digitClass="score-digit"/>
                 </div>
                 <div className="score-box white">
+                    <div className="scoreTitle">WHITE</div>
                     <RollingNumber className="score" key = {whiteScore} target = {whiteScore} digitClass="score-digit"/>
                 </div>
             </div>
