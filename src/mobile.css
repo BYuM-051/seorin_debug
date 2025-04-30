@@ -49,5 +49,66 @@
         font-size: 2rem;         /* ✅ 적당히 줄인 존재감 */
     }
 
-    
+    .houses-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        overflow-x: auto;
+    }
+
+    .house-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        gap: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0px 3px 3px 1px grey;
+        font-size: 1.5rem;
+        white-space: nowrap;
+        margin-top: 0.5rem;
+    }
+
+    .house-rank {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        line-height: 1; /* ✅ 줄간격 고정 */
+        text-align: center;
+      }
+
+      .house-name-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .house-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .house-score {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: flex-end;
+        min-width: 5rem;
+      }
+      
+      .house-digit {
+        height: 2rem;
+        width: 1.5ch;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
   }

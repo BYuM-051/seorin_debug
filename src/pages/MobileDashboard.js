@@ -69,12 +69,6 @@ export default function MobileDashboard() {
                                 <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
                                 <div className="house-name-wrapper">
                                     <span className="house-name">{house.name}</span>
-                                    {rank <= 3 && (
-                                    <FaTrophy className={`trophy trophyrank-${rank}`} />
-                                    )}
-                                </div>
-                                <div className="house-lastupdated-score" style={house.lastChangedAmount > 0 ? {color:"green"} : {color:"red"}}>
-                                    ({house.lastChangedAmount > 0 ? "+" : "" }{house.lastChangedAmount})
                                 </div>
                                 <RollingNumber
                                     className="house-score"
