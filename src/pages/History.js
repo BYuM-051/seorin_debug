@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue } from "firebase/database";
-import "../index.css";
 import RollingNumber from "../components/RollingNumber";
 
 function History() {

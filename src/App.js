@@ -12,24 +12,30 @@ import AdminRoute from "./components/AdminRoute";
 import UserRoute from "./components/UserRoute";
 import Header from "./components/Header";
 import "./index.css";
+import useIsMobile from "./hooks/useIsMobile";
+import MobileHeader from "./components/MobileHeader";
 
 function App() {
   const location = useLocation();
   const { role, currentUser, logout } = useAuth();
   // Hide header on login and signup pages
-  const showHeader = location.pathname !== "/login" && location.pathname !== "/signup";
+  const showNav = location.pathname !== "/login" && location.pathname !== "/signup";
   const handleLogout = ()=>{
     logout();
   };
+  const isMobile = useIsMobile();
+
   return (
     <div>
       {(
+        !isMobile ?
         <Header
-          showHeader={showHeader}
+          showNav={showNav}
           role={role}
           location={location}
-          handleLogout={handleLogout}
-          Link={Link}/>
+          handleLogout={handleLogout}/>
+        :
+        <MobileHeader/>
       )}
       <Routes>
         <Route path="/login" element={<Login />} />

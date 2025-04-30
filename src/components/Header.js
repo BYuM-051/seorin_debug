@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Header( { showHeader, role, location, handleLogout, Link}) {
+export default function Header( { showNav, role, location, handleLogout}) {
     return(
         <header>
             <div className="titleDIV">
                 <img className="logoIMG" src="/logoHeader.png" alt="Logo"/>
                 <span className="titleSPAN">SCOREBOARD</span>
             </div>
-            {showHeader && (<div className="navigationBar">
+            {showNav && (<div className="navigationBar">
                 <nav className="navLeft">
                     {role === "admin" && (
                     <>

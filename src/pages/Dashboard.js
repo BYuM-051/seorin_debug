@@ -2,9 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue, set } from "firebase/database";
-import "../index.css";
 import RollingNumber from "../components/RollingNumber";
 import { FaTrophy } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
 
 function Dashboard() {
   const [realScoreData, setRealScoreData] = useState(null);
@@ -38,7 +38,7 @@ function Dashboard() {
 
   useEffect(() => {
     const scoresRef = ref(db, "scores");
-    onValue(scoresRef, (snapshot) => {
+    const unsubscribe = onValue(scoresRef, (snapshot) => {
       const data = snapshot.val();
 
       if (!data) {
@@ -70,6 +70,8 @@ function Dashboard() {
         }, 3000);
       }
     });
+
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -89,8 +91,11 @@ function Dashboard() {
   }, [showModal]);
 
   if (loading) {
-    return <div className="container">Loading dashboard data...</div>;
-  }
+    return (
+      <div className="loadingScreen">
+        Now Loading.. <ClipLoader size={40} color="#3498db"/>
+      </div>
+  );}
 
   if (noScore || !realScoreData || !displayedScoreData) {
     return (
