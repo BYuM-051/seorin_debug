@@ -30,11 +30,11 @@ function History() {
       <div className="subHeading">History of Winners</div>
       <div className="score-boxes">
         <div className="score-box red">
-          <RollingNumber className="score" key={redWins} target={redWins}>{redWins}</RollingNumber>
+          <RollingNumber className="score" key={redWins} target={redWins}/>
           <div className="scoreTitle">times</div>
         </div>
         <div className="score-box white">
-          <RollingNumber className="score" key={whiteWins} target={whiteWins}>{whiteWins}</RollingNumber> 
+          <RollingNumber className="score" key={whiteWins} target={whiteWins}/> 
           <div className="scoreTitle">times</div>
         </div>
       </div>

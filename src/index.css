@@ -19,19 +19,6 @@ body {
   overflow: hidden;
 }
 
-.background-badge {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-  pointer-events: none;
-  z-index: -9999;
-}
 /* ===============================
    2. HEADER (if used)
 ================================= */
@@ -221,20 +208,6 @@ body {
   background-color: #ddd;
 }
 
-/*
-.rank-1 {
-  background-color: gold;
-  color : white;
-}
-.rank-2 {
-  background-color: silver;
-  color : white;
-}
-.rank-3 {
-  background-color: #CD7F32;
-  color : white;
-}
-*/
 .house-name-wrapper {
   flex: 1;
   display: flex;
@@ -527,7 +500,7 @@ body {
   box-shadow: 0px 3px 3px 1px grey;
   font-size: 2rem;
   font-weight: 500;
-  margin: 0.8rem;
+  margin: 2rem 3rem 0rem 3rem;
   height: 5rem;
 }
 
@@ -552,4 +525,92 @@ body {
   font-size: 4rem;
   box-shadow: 0 4px 15px rgba(0,0,0,0.25);
   font-weight: bold;
+}
+
+/*=========================================
+Mobile <under construction>
+=========================================*/
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .score-boxes {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .houses-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .house-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .house-item {
+    width: 95%;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .house-rank {
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .house-name-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .house-name {
+    font-size: 1rem;
+  }
+
+  .trophy {
+    font-size: 1.2rem;
+  }
+
+  .house-lastupdated-score {
+    font-size: 0.9rem;
+  }
+
+  .house-score {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  .modal-box {
+    width: 80%;
+    font-size: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .subHeading {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .last-update-date {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
 }

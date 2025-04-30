@@ -52,20 +52,20 @@ function AdminHistory() {
   return (
     
     <div className="container">
-      <div className="midtitleDIV">
-        <h2>History of Winners!</h2>
+      <div className="midtitleBox">
+        <div className="subHeading">ADMIN HISTORY BOARD</div>
         <button className="edit-button" onClick={handleAddSampleHistory}>
           Add
         </button>
       </div>
       <div className="score-boxes">
         <div className="score-box red">
-          <span>{redWins}</span> 
-          <div>times</div>
+          <span className="score">{redWins}</span> 
+          <div className="scoreTitle">times</div>
         </div>
         <div className="score-box white">
-          <span>{whiteWins}</span> 
-          <div>times</div>
+          <span className="score">{whiteWins}</span> 
+          <div className="scoreTitle">times</div>
         </div>
       </div>
       

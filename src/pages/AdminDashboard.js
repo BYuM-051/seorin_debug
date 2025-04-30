@@ -142,24 +142,24 @@ function AdminDashboard() {
   
   return (
     <div className="container">
-      <div className="midtitleDIV">
-        <h2 className="subHeading">Admin Dashboard</h2>
+      <div className="midtitleBox">
+        <div className="subHeading">ADMIN DASHBOARD</div>
         <button className="edit-button" onClick={openModal} title="Edit Scores">
           Edit
         </button>
       </div>
       <div className="score-boxes">
         <div className="score-box red">
-          <div>RED</div>
+          <div className="scoreTitle">RED</div>
           <span className="score">{redScore}</span>
         </div>
         <div className="score-box white">
-          <div>WHITE</div>
+          <div className="scoreTitle">WHITE</div>
           <span className="score">{whiteScore}</span>
         </div>
       </div>
       <div className="midtitleDIV">
-        <h2 className="subHeading">Current Winning House</h2>
+        <div className="subHeading">MORTY CUP</div>
       </div>
       <div className="houses-container">
       <div className="houses-columns">
@@ -167,10 +167,12 @@ function AdminDashboard() {
           {leftColumn.map((house, idx) => {
             const rank = idx + 1;
             return (
-              <div className="house-item" key={rank}>
-                <div className={`house-rank rank-${rank}`}>{rank}</div>
-                <div className="house-name">{house.name}</div>
-                <div className="house-score">{house.score}</div>
+              <div className="house-item">
+              <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
+              <div className="house-name-wrapper">
+                <span className="house-name">{house.name}</span>
+              </div>
+              <div className="house-score">{house.score}</div>
               </div>
             );
           })}
@@ -179,10 +181,12 @@ function AdminDashboard() {
           {rightColumn.map((house, idx) => {
             const rank = idx + half + 1;
             return (
-              <div className="house-item" key={rank}>
-                <div className={`house-rank rank-${rank}`}>{rank}</div>
-                <div className="house-name">{house.name}</div>
-                <div className="house-score">{house.score}</div>
+              <div className="house-item">
+              <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
+              <div className="house-name-wrapper">
+                <span className="house-name">{house.name}</span>
+              </div>
+              <div className="house-score">{house.score}</div>
               </div>
             );
           })}
