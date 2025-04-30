@@ -4,6 +4,7 @@ import { ref, onValue, set } from "firebase/database";
 import "../mobile.css";
 import RollingNumber from "../components/RollingNumber";
 import { ClipLoader } from "react-spinners";
+import { FaTrophy } from "react-icons/fa";
 
 export default function MobileDashboard() {
     const [scoreData, setScoreData] = useState(null);
@@ -63,8 +64,26 @@ export default function MobileDashboard() {
                 {
                     sortedHouses.map((house, idx) => {
                         const rank = idx + 1;
-
-
+                        return (
+                            <div className="house-item">
+                                <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
+                                <div className="house-name-wrapper">
+                                    <span className="house-name">{house.name}</span>
+                                    {rank <= 3 && (
+                                    <FaTrophy className={`trophy trophyrank-${rank}`} />
+                                    )}
+                                </div>
+                                <div className="house-lastupdated-score" style={house.lastChangedAmount > 0 ? {color:"green"} : {color:"red"}}>
+                                    ({house.lastChangedAmount > 0 ? "+" : "" }{house.lastChangedAmount})
+                                </div>
+                                <RollingNumber
+                                    className="house-score"
+                                    digitClass="house-digit"
+                                    key={`${house.name}-${house.score}`}
+                                    target={house.score}
+                                />
+                            </div>
+                        );
                     })
                 }
         
