@@ -102,22 +102,19 @@ body {
 ================================= */
 .container {
   margin: 0;
-  padding: 1rem;
+  padding: 3rem;
   border-radius: 4px;
   overflow-x: hidden;
 }
 
-.midtitleDIV
+.midtitleBox
 {
   display: flex;
   justify-content: space-between;
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .subHeading
 {
-  margin-left: 1em;
   font-size: 2.2rem;
   font-weight: bold;
 }
@@ -128,7 +125,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-
   
 }
 
@@ -141,7 +137,7 @@ body {
   font-weight: bold;
   border: 1px solid #ddd;
   box-shadow: 0px 3px 3px 1px grey;
-  margin: 5rem;
+  margin: 3rem;
 }
 
 .score {
@@ -159,11 +155,6 @@ body {
 
 .scoreTitle{
   font-size: 2.8rem;
-}
-
-.score-box span
-{
-  font-size: 4rem;
 }
 
 .score-box.red {
@@ -188,7 +179,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   overflow-x: auto;
-  padding: 10px 10px 10px 10px;
+
 }
 .houses-columns {
   display: flex;
@@ -201,7 +192,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 2rem 5rem 2rem 5rem;
+  padding: 2rem 3rem 0.3rem 3rem;
 }
 .house-item {
   display: flex;

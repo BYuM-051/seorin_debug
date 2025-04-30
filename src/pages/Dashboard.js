@@ -5,8 +5,6 @@ import { ref, onValue, set } from "firebase/database";
 import "../index.css";
 import RollingNumber from "../components/RollingNumber";
 import { FaTrophy } from "react-icons/fa";
-import { style } from "framer-motion/client";
-import { color } from "framer-motion";
 
 function Dashboard() {
   const [realScoreData, setRealScoreData] = useState(null);
@@ -116,10 +114,12 @@ function Dashboard() {
   return (
     <>
       <div className="container">
+        <div className="midtitleBox">
+        <div className="subHeading">Color Competition</div>
         <div className="last-update-date">
           Last Update : {realScoreData.updatedDate ? new Date(realScoreData.updatedDate).toLocaleString() : "No date available"}
         </div>
-        <div className="subHeading">Color Competition</div>
+        </div>
         <div className="score-boxes">
           <div className="score-box red">
             <div className="scoreTitle">RED</div>

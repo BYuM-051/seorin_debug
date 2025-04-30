@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue } from "firebase/database";
 import "../index.css";
+import RollingNumber from "../components/RollingNumber";
 
 function History() {
   const [records, setRecords] = useState([]);
@@ -26,21 +27,21 @@ function History() {
 
   return (
     <div className="container">
-      <h2>History of Winners!</h2>
+      <div className="subHeading">History of Winners!</div>
       <div className="score-boxes">
         <div className="score-box red">
-          <span>{redWins}</span> 
-          <div>times</div>
+          <RollingNumber className="score" key={redWins} target={redWins}>{redWins}</RollingNumber>
+          <div className="scoreTitle">times</div>
         </div>
         <div className="score-box white">
-          <span>{whiteWins}</span> 
-          <div>times</div>
+          <RollingNumber className="score" key={whiteWins} target={whiteWins}>{whiteWins}</RollingNumber> 
+          <div className="scoreTitle">times</div>
         </div>
       </div>
 
       <div className="history-lists">
         {records.map((record, idx) => (
-          <div className="history-list" key={idx}>
+          <div className="history-list" key={record.id}>
             <div className="history-cell year">{record.year}</div>
             <div>|</div>
             <div className="history-cell team">{record.team}</div>

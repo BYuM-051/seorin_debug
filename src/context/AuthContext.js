@@ -6,6 +6,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   createUserWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 import { ref, get } from "firebase/database";
 
@@ -37,12 +39,15 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  const login = (email, password) =>
-    signInWithEmailAndPassword(auth, email, password);
+  const login = async (email, password) => {
+    await setPersistence(auth, browserSessionPersistence);
+    return signInWithEmailAndPassword(auth, email, password);
+  }
   const logout = () => signOut(auth);
-  const signup = (email, password) =>
-    createUserWithEmailAndPassword(auth, email, password);
-
+  const signup = async (email, password) => {
+    await setPersistence(auth, browserSessionPersistence);
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
   return (
     <AuthContext.Provider value={{ currentUser, role, login, logout, signup }}>
       {!loading && children}
