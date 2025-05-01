@@ -1,17 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function MobileHeader(){
     const location = useLocation();
+    const navigate = useNavigate();
     return (
         <header>
             <div className="titleDIV">
                 <span className="titleSPAN">SCOREBOARD</span>
             </div>
-            {false && <div className="mobile-nav">
-                <Link to = "/" className={location.pathname === "/" ? "active-link" : ""}>🏠 Dashboard</Link>
-                <Link to = "/history" className={location.pathname === "/history" ? "active-link" : ""}>📜 History</Link>
-            </div>}
+            <div className="mobile-nav">
+                <div onClick = {() => navigate("/")} className = {`nav-button ${location.pathname === "/" ? "active-link" : ""}`}>Dashboard</div>
+                <div onClick = {() => navigate("/history")} className = {`nav-button ${location.pathname === "/history" ? "active-link" : ""}`}>History</div>
+            </div>
         </header>
     );
 }

@@ -43,8 +43,6 @@ export default function MobileDashboard() {
 
     return(
         <div className="container">
-            <div className="lastUpdateDate">Last Update : {scoreData.updatedDate ? new Date(scoreData.updatedDate).toLocaleString() : " No date available"}</div>
-            <div className="mobileVerticalBlank"> </div>
             <div className="subHeading">Color Competition</div>
             <div className="score-boxes">
                 <div className="score-box red">
