@@ -15,6 +15,7 @@ import "./index.css";
 import useIsMobile from "./hooks/useIsMobile";
 import MobileHeader from "./components/MobileHeader";
 import MobileDashboard from "./pages/MobileDashboard";
+import MobileHistory from "./pages/MobileHistory";
 
 function App() {
   const location = useLocation();
@@ -67,7 +68,13 @@ function App() {
           path="/history"
           element={
             <UserRoute>
-              <History />
+              {
+                isMobile ?
+                <MobileHistory/>
+                :
+                <History />
+              }
+              
             </UserRoute>
           }
         />

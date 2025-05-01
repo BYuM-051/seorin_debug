@@ -40,15 +40,12 @@ function Dashboard() {
     const scoresRef = ref(db, "scores");
     const unsubscribe = onValue(scoresRef, (snapshot) => {
       const data = snapshot.val();
-
+      setLoading(false);
       if (!data) {
         setNoScore(true);
         setRealScoreData(null);
-        setLoading(false);
         return;
       }
-
-      setLoading(false);
 
       if (!realScoreDataRef.current) {
         setRealScoreData(data);

@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import { ref, onValue } from "firebase/database";
 import RollingNumber from "../components/RollingNumber";
+import { ClipLoader } from "react-spinners";
 
 function History() {
   const [records, setRecords] = useState([]);
   const [redWins, setRedWins] = useState(0);
   const [whiteWins, setWhiteWins] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const historyRef = ref(db, "history");
@@ -21,8 +23,17 @@ function History() {
         setRedWins(historyArray.filter((r) => r.team === "RED").length);
         setWhiteWins(historyArray.filter((r) => r.team === "WHITE").length);
       }
+      setLoading(false);
     });
   }, []);
+
+  if(loading) {
+    return(
+      <div className="loadingScreen">
+        Now Loading.. <ClipLoader size={40} color="#3498db"/>
+    </div>
+    );
+  }
 
   return (
     <div className="container">
