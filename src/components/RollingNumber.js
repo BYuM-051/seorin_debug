@@ -24,21 +24,29 @@ const RollingDigit = React.memo(function RollingDigit({
   const [translateY, setTranslateY] = useState(0);
   const measureRef = useRef(null);
 
+  // 안정적인 digitHeight 측정
   useEffect(() => {
-    if (digitHeight === null) {
-      requestAnimationFrame(() => {
-        const h = measureRef.current?.offsetHeight;
+    if (!measureRef.current || digitHeight !== null) return;
+
+    let frame = 0;
+    const measureLoop = () => {
+      if (frame >= 2) {
+        const h = measureRef.current.offsetHeight;
         if (h > 0) setDigitHeight(h);
-      });
-    }
+      } else {
+        frame++;
+        requestAnimationFrame(measureLoop);
+      }
+    };
+    measureLoop();
   }, [digitHeight]);
 
+  // 숫자 리스트 및 애니메이션
   useEffect(() => {
     if (digitHeight === null) return;
 
     const loop = 4;
     const digitList = Array.from({ length: loop * 10 }, (_, i) => i % 10).concat(digit);
-
     setDigits(digitList);
     setTranslateY(0);
 
@@ -98,6 +106,7 @@ const RollingDigit = React.memo(function RollingDigit({
   );
 });
 
+// 전체 숫자 단위
 export default function RollingNumber({
   target = 0,
   className = "",
