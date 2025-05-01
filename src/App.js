@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, Link, useLocation, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import Dashboard from "./pages/Dashboard";
 import History from "./pages/History";
@@ -18,6 +18,7 @@ import MobileDashboard from "./pages/MobileDashboard";
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { role, currentUser, logout } = useAuth();
   // Hide header on login and signup pages
   const showNav = location.pathname !== "/login" && location.pathname !== "/signup";
@@ -25,6 +26,14 @@ function App() {
     logout();
   };
   const isMobile = useIsMobile();
+
+  const restrictedRoutesForMobile = ["/login", "/signup"];
+  useEffect(()=>{
+    if( isMobile && restrictedRoutesForMobile.includes(location.pathname))
+    {
+      navigate("/", {replace:true});
+    }
+  });
 
   return (
     <div>
