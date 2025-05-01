@@ -11,7 +11,7 @@ how to use :
 
 import React, { useEffect, useRef, useState } from "react";
 
-// 단일 숫자 자리
+// 단일 숫자 자리 컴포넌트
 const RollingDigit = React.memo(function RollingDigit({
   digit,
   duration = 1500,
@@ -24,15 +24,15 @@ const RollingDigit = React.memo(function RollingDigit({
   const [translateY, setTranslateY] = useState(0);
   const measureRef = useRef(null);
 
-  // 안정적인 digitHeight 측정
+  // digitHeight 측정: 렌더 직후 안정화된 레이아웃 기준
   useEffect(() => {
     if (!measureRef.current || digitHeight !== null) return;
 
     let frame = 0;
     const measureLoop = () => {
-      if (frame >= 2) {
-        const h = measureRef.current.offsetHeight;
-        if (h > 0) setDigitHeight(h);
+      const h = measureRef.current.offsetHeight;
+      if (h > 0 || frame >= 4) {
+        setDigitHeight(h > 0 ? h : 32); // fallback 최소값
       } else {
         frame++;
         requestAnimationFrame(measureLoop);
@@ -41,9 +41,9 @@ const RollingDigit = React.memo(function RollingDigit({
     measureLoop();
   }, [digitHeight]);
 
-  // 숫자 리스트 및 애니메이션
+  // digitHeight 확정 후 애니메이션 트리거
   useEffect(() => {
-    if (digitHeight === null) return;
+    if (digitHeight === null || digitHeight === 0) return;
 
     const loop = 4;
     const digitList = Array.from({ length: loop * 10 }, (_, i) => i % 10).concat(digit);
@@ -59,34 +59,44 @@ const RollingDigit = React.memo(function RollingDigit({
     return () => clearTimeout(timeout);
   }, [digit, digitHeight, delay]);
 
+  // 높이 측정 전에는 placeholder 렌더링 (Hook 순서 유지)
+  if (digitHeight === null || digitHeight === 0) {
+    return (
+      <div style={{ width: "1.2ch", height: "2rem", visibility: "hidden" }}>
+        <div ref={measureRef} className={digitClass} style={digitStyle}>
+          0
+        </div>
+      </div>
+    );
+  }
+
+  // 정상 렌더링
   return (
     <div
       style={{
         overflow: "hidden",
         width: "1.2ch",
-        height: digitHeight ?? "auto",
+        height: digitHeight,
         position: "relative",
       }}
     >
-      {digitHeight !== null && (
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            display: "flex",
-            flexDirection: "column",
-            transform: `translateY(-${translateY * digitHeight}px)`,
-            transition: `transform ${duration}ms ease-in-out`,
-          }}
-        >
-          {digits.map((d, i) => (
-            <div className={digitClass} style={digitStyle} key={i}>
-              {d}
-            </div>
-          ))}
-        </div>
-      )}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          display: "flex",
+          flexDirection: "column",
+          transform: `translateY(-${translateY * digitHeight}px)`,
+          transition: `transform ${duration}ms ease-in-out`,
+        }}
+      >
+        {digits.map((d, i) => (
+          <div className={digitClass} style={digitStyle} key={i}>
+            {d}
+          </div>
+        ))}
+      </div>
 
       {/* 높이 측정용 */}
       <div
@@ -106,7 +116,7 @@ const RollingDigit = React.memo(function RollingDigit({
   );
 });
 
-// 전체 숫자 단위
+// 전체 숫자 조립 컴포넌트
 export default function RollingNumber({
   target = 0,
   className = "",
