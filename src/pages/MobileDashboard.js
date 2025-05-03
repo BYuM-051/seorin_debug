@@ -58,7 +58,7 @@ export default function MobileDashboard() {
             <div className="mobileVerticalBlank"> </div>
 
             <div className="subHeading">Morty Cup</div>
-            <div className="houses-container"></div>
+            <div className="houses-container">
                 {
                     sortedHouses.map((house, idx) => {
                         const rank = idx + 1;
@@ -78,7 +78,7 @@ export default function MobileDashboard() {
                         );
                     })
                 }
-        
+            </div>
         </div>
     );
 }

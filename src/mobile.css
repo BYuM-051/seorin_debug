@@ -50,6 +50,7 @@
         margin: 0;
         padding: 0;
         text-align: start;
+        font-size: 2rem;
     }
   
     .lastUpdateDate {
@@ -84,7 +85,7 @@
     .houses-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
+        gap: 0rem;
         overflow-x: auto;
     }
 
@@ -115,32 +116,90 @@
         box-sizing: border-box;
         line-height: 1; /* ✅ 줄간격 고정 */
         text-align: center;
-      }
+    }
 
-      .house-name-wrapper {
+    .house-name-wrapper {
         flex: 1;
         display: flex;
         align-items: center;
         gap: 0.4rem;
-      }
+    }
 
-      .house-name {
+    .house-name {
         font-size: 1.3rem;
         font-weight: bold;
-      }
+    }
 
-      .house-score {
+    .house-score {
         font-size: 1.3rem;
         font-weight: bold;
         display: flex;
         justify-content: flex-end;
         min-width: 5rem;
-      }
+    }
       
-      .house-digit {
+    .house-digit {
         height: 2rem;
         width: 1.5ch;
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
-      }
+    }
+
+    .history-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0rem;
+        overflow-x: auto;
+    }
+
+    .history-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        gap: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0px 3px 3px 1px grey;
+        font-size: 1.5rem;
+        white-space: nowrap;
+        margin-top: 0.5rem;
+    }
+
+    .house-rank.year {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        line-height: 1; /* ✅ 줄간격 고정 */
+        text-align: center;
+    }
+
+    .history-cell {
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    .history-cell.team {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-left: 1rem;
+    }
+
+    .history-cell.house {
+        font-size: 1.3rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: flex-end;
+        min-width: 5rem;
+    }
+      
   }

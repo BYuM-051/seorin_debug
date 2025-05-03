@@ -48,6 +48,18 @@ export default function MobileHistory(){
                 <RollingNumber className="score" key = {whiteWins} target = {whiteWins} digitClass="score-digit"/>
             </div>
         </div>
+        <div className="mobileVerticalBlank"> </div>
+        <div className="history-container">
+            {
+                records.map((record, idx) => (
+                    <div className="history-card" key={record.id}>
+                        <div className="history-cell year">{record.year}</div>
+                        <div className="history-cell team">{record.team}</div>
+                        <div className="history-cell house">{record.house}</div>
+                    </div>
+                ))
+            }
+        </div>
     </div>
 
   );
