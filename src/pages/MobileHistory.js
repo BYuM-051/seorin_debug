@@ -60,6 +60,7 @@ export default function MobileHistory(){
                 ))
             }
         </div>
+        <div className="mobileVerticalBlank"> </div>
     </div>
 
   );
