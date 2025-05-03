@@ -1,205 +1,197 @@
 @media (max-width: 768px) {
     .container {
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0px;
-        padding: 20px;
+      width: 100%;
+      margin: 0;
+      padding: 1.2rem;
+      box-sizing: border-box;
     }
-
+  
     .titleDIV {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        justify-content: center;
-        height: 4rem;
+      justify-content: center;
+      height: 4rem;
+      padding: 0;
+      margin: 0;
     }
+  
     .titleSPAN {
-        font-size: 2.5rem;
+      font-size: 2.5rem;
     }
-
+  
     .mobile-nav {
-        display: flex;
-        justify-content: space-around;
-        padding: 0.5rem 0;
-        gap: 0.5rem;
-      }
-
-    .nav-button {
-        width: 45%;
-        padding: 0.5rem 0.8rem;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 5px;
-        background: white;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 바깥쪽 그림자 */
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-      }
-      
-    .nav-button.active-link {
-        background: #892233;
-        color: white;
-        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4); /* 안쪽 그림자 */
-      }
-
-    .mobileVerticalBlank {
-        margin-top: 1rem;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem 0;
+      gap: 0.5rem;
     }
-
+  
+    .nav-button {
+      width: 45%;
+      padding: 0.5rem 0.8rem;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+  
+    .nav-button.active-link {
+      background: #892233;
+      color: white;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+  
+    .mobileVerticalBlank {
+      margin-top: 1rem;
+    }
+  
     .subHeading {
-        margin: 0;
-        padding: 0;
-        text-align: start;
-        font-size: 2rem;
+      font-size: 2rem;
+      text-align: start;
+      margin: 0;
+      padding: 0;
     }
   
     .lastUpdateDate {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
     }
   
     .score-boxes {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-between !important;
-        align-items: stretch !important;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
     }
-    
+  
     .score-box {
-        width: 40% !important;
-        box-sizing: border-box;
-        margin: 0px !important;
-        padding: 1rem !important;
-        font-size: 1.5rem;
+      width: 45%;
+      margin: 0;
+      padding: 1rem;
+      font-size: 1.5rem;
+      box-sizing: border-box;
     }
-
+  
     .scoreTitle {
-        font-size: 1.6rem;
+      font-size: 1.6rem;
     }
   
     .score {
-        font-size: 2rem;         /* ✅ 적당히 줄인 존재감 */
+      font-size: 2rem;
     }
-
+  
     .houses-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0rem;
-        overflow-x: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      overflow-x: hidden;
     }
-
+  
     .house-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        gap: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-shadow: 0px 3px 3px 1px grey;
-        font-size: 1.5rem;
-        white-space: nowrap;
-        margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      gap: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0px 3px 3px 1px grey;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+      white-space: nowrap;
     }
-
+  
     .house-rank {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 3px;
-        border: 1px solid black;
-        box-sizing: border-box;
-        line-height: 1; /* ✅ 줄간격 고정 */
-        text-align: center;
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 3px;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      line-height: 1;
+      text-align: center;
     }
-
+  
     .house-name-wrapper {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-
+  
     .house-name {
-        font-size: 1.3rem;
-        font-weight: bold;
+      font-size: 1.3rem;
+      font-weight: bold;
     }
-
+  
     .house-score {
-        font-size: 1.3rem;
-        font-weight: bold;
-        display: flex;
-        justify-content: flex-end;
-        min-width: 5rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: flex-end;
+      min-width: 5rem;
     }
-      
+  
     .house-digit {
-        height: 2rem;
-        width: 1.5ch;
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
+      height: 2rem;
+      width: 1.5ch;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
     }
-
+  
     .history-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0rem;
-        overflow-x: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      overflow-x: hidden;
     }
-
+  
     .history-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        gap: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-shadow: 0px 3px 3px 1px grey;
-        font-size: 1.5rem;
-        white-space: nowrap;
-        margin-top: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: 95%;
+      margin: 0.5rem auto;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0px 3px 3px 1px grey;
+      font-size: 1.3rem;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      gap: 0.5rem;
     }
-
-    .house-rank.year {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 3px;
-        border: 1px solid black;
-        box-sizing: border-box;
-        line-height: 1; /* ✅ 줄간격 고정 */
-        text-align: center;
-    }
-
+  
     .history-cell {
-        font-size: 1.3rem;
-        font-weight: bold;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: bold;
     }
-
+  
     .history-cell.team {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin-left: 1rem;
+      margin-left: 1rem;
+      gap: 0.4rem;
     }
-
+  
     .history-cell.house {
-        font-size: 1.3rem;
-        font-weight: bold;
-        display: flex;
-        justify-content: flex-end;
-        min-width: 5rem;
+      justify-content: flex-end;
+      display: flex;
+      min-width: 5rem;
     }
-      
   }
+  
