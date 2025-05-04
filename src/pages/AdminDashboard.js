@@ -13,7 +13,6 @@ function AdminDashboard() {
     houses: [],
   });
 
-  // Function to add initial score document
   const handleAddScoreData = async () => {
     const initialScores = {
       red: 0,
@@ -36,69 +35,33 @@ function AdminDashboard() {
     }
   };
 
-  // Read scores from Realtime Database
   useEffect(() => {
     const scoresRef = ref(db, "scores");
     onValue(scoresRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        setData(data);
-      }
+      if (data) setData(data);
     });
   }, []);
 
-  // Compute team totals from houses array
-  /*
-  const computeTotals = (houses) => {
-    let redTotal = 0;
-    let whiteTotal = 0;
-    houses.forEach((house) => {
-      if (redDorms.includes(house.name)) {
-        redTotal += Number(house.score);
-      } else {
-        whiteTotal += Number(house.score);
-      }
-    });
-    return { redTotal, whiteTotal };
-  };
-  */
-  //const currentHouses = showModal ? form.houses : data?.houses || [];
-  //const { redTotal, whiteTotal } = computeTotals(currentHouses);
-
-  // Open modal with current data
   const openModal = () => {
     if (!data) return;
-    const sortedHouses = data.houses ? structuredClone(data.houses.slice()).sort((a, b) => b.score - a.score) : [];
     setForm({
-      red: redScore,
-      white: whiteScore,
-      houses: sortedHouses,
+      red: data.red,
+      white: data.white,
+      houses: structuredClone(data.houses), // 원본 순서 유지
     });
     setShowModal(true);
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const closeModal = () => setShowModal(false);
 
-  // Save changes to Realtime Database
   const handleSave = async () => {
     const updatedHouses = form.houses.map((house) => {
       const original = data.houses.find((h) => h.name === house.name);
       const oldScore = original ? original.score : 0;
       const diff = house.score - oldScore;
-      if(diff !== 0){
-        return {
-          ...house,
-          lastChangedAmount : diff,
-        };
-      }
-      else
-      {
-        return house;
-      }
+      return diff !== 0 ? { ...house, lastChangedAmount: diff } : house;
     });
-
 
     try {
       await set(ref(db, "scores"), {
@@ -133,13 +96,14 @@ function AdminDashboard() {
       </div>
     );
   }
-  const sortedHouses = data.houses ? data.houses.slice().sort((a, b) => b.score - a.score) : [];
+
+  const redScore = data.red;
+  const whiteScore = data.white;
+  const sortedHouses = data.houses.slice().sort((a, b) => b.score - a.score);
   const half = Math.ceil(sortedHouses.length / 2);
   const leftColumn = sortedHouses.slice(0, half);
   const rightColumn = sortedHouses.slice(half);
-  const redScore = data.red;
-  const whiteScore = data.white;
-  
+
   return (
     <div className="container">
       <div className="midtitleBox">
@@ -162,36 +126,40 @@ function AdminDashboard() {
         <div className="subHeading">MORTY CUP</div>
       </div>
       <div className="houses-container">
-      <div className="houses-columns">
-        <div className="house-col">
-          {leftColumn.map((house, idx) => {
-            const rank = idx + 1;
-            return (
-              <div className="house-item">
-              <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
-              <div className="house-name-wrapper">
-                <span className="house-name">{house.name}</span>
+        <div className="houses-columns">
+          <div className="house-col">
+            {leftColumn.map((house, idx) => (
+              <div className="house-item" key={house.name}>
+                <div
+                  className={`house-rank rank-${idx + 1}`}
+                  style={{ backgroundColor: house.color, color: house.fontColor }}
+                >
+                  {idx + 1}
+                </div>
+                <div className="house-name-wrapper">
+                  <span className="house-name">{house.name}</span>
+                </div>
+                <div className="house-score">{house.score}</div>
               </div>
-              <div className="house-score">{house.score}</div>
+            ))}
+          </div>
+          <div className="house-col">
+            {rightColumn.map((house, idx) => (
+              <div className="house-item" key={house.name}>
+                <div
+                  className={`house-rank rank-${idx + half + 1}`}
+                  style={{ backgroundColor: house.color, color: house.fontColor }}
+                >
+                  {idx + half + 1}
+                </div>
+                <div className="house-name-wrapper">
+                  <span className="house-name">{house.name}</span>
+                </div>
+                <div className="house-score">{house.score}</div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-        <div className="house-col">
-          {rightColumn.map((house, idx) => {
-            const rank = idx + half + 1;
-            return (
-              <div className="house-item">
-              <div className={`house-rank rank-${rank}`} style={{backgroundColor:house.color, color:house.fontColor}}>{rank}</div>
-              <div className="house-name-wrapper">
-                <span className="house-name">{house.name}</span>
-              </div>
-              <div className="house-score">{house.score}</div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
       </div>
 
       {showModal && (
@@ -211,13 +179,21 @@ function AdminDashboard() {
               {form.houses.map((house, idx) => (
                 <div key={idx} className="house-edit-row">
                   <label>{house.name}:</label>
-                  <input type="number" value={house.score} onChange={(e) => handleHouseChange(idx, e.target.value)} />
+                  <input
+                    type="number"
+                    value={house.score}
+                    onChange={(e) => handleHouseChange(idx, e.target.value)}
+                  />
                 </div>
               ))}
             </div>
             <div className="modal-buttons">
-              <button onClick={closeModal} className="cancel-btn">Cancel</button>
-              <button onClick={handleSave} className="save-btn">Save</button>
+              <button onClick={closeModal} className="cancel-btn">
+                Cancel
+              </button>
+              <button onClick={handleSave} className="save-btn">
+                Save
+              </button>
             </div>
           </div>
         </div>
